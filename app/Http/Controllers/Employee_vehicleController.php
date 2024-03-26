@@ -12,7 +12,7 @@ class Employee_vehicleController extends Controller
     public function index(Request $request)
     {
         $employee_vehicles = Employee_vehicle::with('nameemployee','namevehicle')->get();
-        return view('Employee_vehiclesIndex', compact('employee_vehicles'));
+        return view('Employee_vehicleIndex', compact('employee_vehicles'));
     }
 
     public function create()

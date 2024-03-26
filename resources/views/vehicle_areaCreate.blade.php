@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
     <h2>Asignacion de Vehiculos a un Area</h2>
-    <form method="POST" action="{{ route('vehicle_area.store') }}">
+    <form method="POST" action="{{ route('vehicle_areas.store') }}">
         @csrf
         <div class="col-md-6">
             <label for="areas_id" class="form-label">Seleccionar un Area:</label>

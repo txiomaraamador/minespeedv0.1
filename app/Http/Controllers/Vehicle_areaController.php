@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Areas;
 use App\Models\Vehicles;
+use App\Models\Vehicle_area;
 
 class Vehicle_areaController extends Controller
 {
     public function index(Request $request)
     {
-        $vehicle_area = Employee_vehicle::with('namevehicle','namearea')->get();
-        return view('Vehicle_areaIndex', compact('vehicle_area'));
+        $vehicle_areas = vehicle_area::with('namevehicle','namearea')->get();
+        return view('Vehicle_areaIndex', compact('vehicle_areas'));
     }
 
     public function create()
@@ -38,10 +39,10 @@ class Vehicle_areaController extends Controller
 
             $vehicle_area->save();
     
-            return redirect("/vehicle_area")->with('success', 'Aginacion creado con éxito');
+            return redirect("/vehicle_areas")->with('success', 'Aginacion creado con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-            return redirect("/vehicle_area/create")->with('error', 'No se puede agregar la asignacion.');
+            return redirect("/vehicle_areas/create")->with('error', 'No se puede agregar la asignacion.');
         }
     }
 
@@ -78,7 +79,7 @@ class Vehicle_areaController extends Controller
         
                 if (!$vehicle_area) {
                     // Manejar el caso en que el area no se encuentra
-                    return redirect()->route('vehicle_area.index')->with('error', 'Asignacion no encontrada');
+                    return redirect()->route('vehicle_areas.index')->with('error', 'Asignacion no encontrada');
                 }
         
                 // Actualizar los datos del area
@@ -87,7 +88,7 @@ class Vehicle_areaController extends Controller
         
                 $vehicle_area->save();
         
-                return redirect()->route('vehicle_area.index', $vehicle_area->id)->with('success', 'Asignacion actualizado con éxito');
+                return redirect()->route('vehicle_areas.index', $vehicle_area->id)->with('success', 'Asignacion actualizado con éxito');
     }
 
     public function destroy($id)
@@ -99,13 +100,13 @@ class Vehicle_areaController extends Controller
            
             try {
                 $vehicle_area->delete();
-                return redirect("/vehicle_area")->with('success', 'La asignacion ha sido eliminado con éxito');
+                return redirect("/vehicle_areas")->with('success', 'La asignacion ha sido eliminado con éxito');
             } catch (\Illuminate\Database\QueryException $e) {
                 // Manejar la excepción de la base de datos (error de llave foránea)
-                return redirect("/vehicle_area")->with('error', 'No se puede eliminar la asignacion, está siendo utilizado en otra parte del sistema.');
+                return redirect("/vehicle_areas")->with('error', 'No se puede eliminar la asignacion, está siendo utilizado en otra parte del sistema.');
             }
         } else {
-            return redirect("/vehicle_area")->with('error', 'Asignacion no encontrado');
+            return redirect("/vehicle_areas")->with('error', 'Asignacion no encontrado');
         }
     }
 }

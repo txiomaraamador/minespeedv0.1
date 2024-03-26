@@ -81,8 +81,8 @@ Route::put('/employee_vehicles/{id}',[Employee_vehicleController::class, 'update
 Route::delete('/employee_vehicles/delete/{id}',[Employee_vehicleController::class, 'destroy'])->name('employee_vehicles.destroy');
 
 
-Route::resource('/vehicle_area',Vehicle_areaController::class);
-Route::post('/vehicle_area/create',[Vehicle_areaController::class, 'create']);
+Route::resource('/vehicle_areas',Vehicle_areaController::class);
+Route::post('/vehicle_areas/create',[Vehicle_areaController::class, 'create']);
 Route::get('/vehicle_area/edit/{id}',[Vehicle_areaController::class, 'edit']);
 Route::put('/vehicle_area/{id}',[Vehicle_areaController::class, 'update']);
 Route::delete('/vehicle_area/delete/{id}',[Vehicle_areaController::class, 'destroy'])->name('vehicle_area.destroy');
