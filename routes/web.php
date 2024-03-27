@@ -33,6 +33,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/areas',AreasController::class);
+Route::get('/areas/show/{id}',[AreasController::class, 'show']);
 Route::post('/areas/create',[AreasController::class, 'create']);
 Route::get('/areas/edit/{id}',[AreasController::class, 'edit']);
 Route::put('/areas/{id}',[AreasController::class, 'update']);

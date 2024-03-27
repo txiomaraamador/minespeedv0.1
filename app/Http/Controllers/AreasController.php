@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Areas;
+use App\Models\Vehicles;
+use App\Models\Vehicle_area;
 
 class AreasController extends Controller
 {
@@ -49,16 +51,20 @@ class AreasController extends Controller
         }
     }
 
-   /* public function show($id)
+    public function show($id)
     {
         $area = Areas::find($id);
+        
+        $vehicle_areas = Vehicle_area::where('areas_id', $area->id)->pluck('vehicles_id')->toArray();
+        //dd($vehicle_areas);
+        
+        //$areas_ids = $vehicle_areas->pluck('areas_id')->toArray();
+        //dd($areas_ids);
+        $vehicles = Vehicles::with('nametypevehicle')->whereIn('id', $vehicle_areas)->get();
+        ($vehicles);
 
-        if ($area) {
-            return view('AreaShow', compact('area'));
-        } else {
-            return redirect()->route('areas.index')->with('error', 'area no encontrada.');
-        }
-    }*/
+        return view('AreaShowV', compact('area','vehicles'));
+    }
 
     public function edit($id)
     {
