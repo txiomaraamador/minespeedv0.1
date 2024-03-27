@@ -38,6 +38,10 @@
                     <td>{{ $vehicle->nametypevehicle->name}}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <form action="{{ route('vehicles.show', $vehicle->id) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-success">Ver Detalles</button>
+                            </form>
                             <!-- Botón para editar el paciente -->
                             <form action="{{ route('vehicles.edit', $vehicle->id) }}" method="GET">
                                 @csrf

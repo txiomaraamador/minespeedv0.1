@@ -63,6 +63,7 @@ Route::put('/employees/{id}',[EmployeesController::class, 'update']);
 Route::delete('/employees/delete/{id}',[EmployeesController::class, 'destroy'])->name('employees.destroy');
 
 Route::resource('/vehicles',VehiclesController::class);
+Route::get('/vehicles/show/{id}',[VehiclesController::class, 'show']);
 Route::post('/vehicles/create',[VehiclesController::class, 'create']);
 Route::get('/vehicles/edit/{id}',[VehiclesController::class, 'edit']);
 Route::put('/vehicles/{id}',[VehiclesController::class, 'update']);
