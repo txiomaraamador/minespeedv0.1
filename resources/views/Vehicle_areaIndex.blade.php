@@ -37,8 +37,11 @@
             
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <!-- Botón para editar el paciente -->
-                            
+                           
+                            <form action="{{ route('vehicles.show', $vehicle_area->namevehicle->id) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-success">Ver Detalles</button>
+                            </form>
                             <!-- Botón de eliminación -->
                             <form action="{{ route('vehicle_area.destroy', $vehicle_area->id) }}" method="POST">
                                 @csrf
