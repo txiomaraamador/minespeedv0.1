@@ -20,7 +20,7 @@
             <input type="text" class="form-control" id="model" name="model">
         </div>
        
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Guardar</button>
     </form>
 </div>
 

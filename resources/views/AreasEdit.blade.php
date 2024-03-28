@@ -16,7 +16,7 @@
             <label for="topographic_information" class="form-label">Información Topográfica</label>
             <input type="text" class="form-control" id="topographic_information" name="topographic_information" value="{{ $area->topographic_information }}">
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Guardar Cambios</button>
     </form>
 </div>
 

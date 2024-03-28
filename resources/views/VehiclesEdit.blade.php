@@ -42,7 +42,7 @@
             </select>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Guardar Cambios</button>
     </form>
 </div>
 
