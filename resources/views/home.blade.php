@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br>
 <div class="card bg-light text-center w-100 mb-10">
     <div class="card-body">
         <h1 class="card-title mx-auto">VELOCIMETRO</h1>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -18,7 +19,7 @@
                     {{ __('Si no recibiste el correo electrónico') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('haz clic aquí para solicitar otro') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">{{ __('haz clic aquí para solicitar otro') }}</button>.
                     </form>
                 </div>
             </div>
