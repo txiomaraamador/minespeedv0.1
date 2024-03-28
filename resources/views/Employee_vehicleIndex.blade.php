@@ -22,6 +22,7 @@
                     <th>Placa</th>
                     <th>Chofer</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,14 +33,12 @@
                     <td>{{ $employee_vehicle->namevehicle->model }}</td>
                     <td>{{ $employee_vehicle->namevehicle->plate }}</td>
                     <td>{{ $employee_vehicle->nameemployee->identification_number }}, {{ $employee_vehicle->nameemployee->name }} {{ $employee_vehicle->nameemployee->lastname }}</td>
-
+                    <td>
+                        <a href="{{ route('vehicles.show', $employee_vehicle->namevehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                    </td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <!-- Botón para editar el paciente -->
-                            <form action="{{ route('vehicles.show', $employee_vehicle->namevehicle->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">Ver Detalles</button>
-                            </form>
+                        
                             <!-- Botón de eliminación -->
                             <form action="{{ route('employee_vehicles.destroy', $employee_vehicle->id) }}" method="POST">
                                 @csrf

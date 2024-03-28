@@ -24,6 +24,7 @@
                     <th>Carga</th>
                     <th>Tipo de vehiculo</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +38,11 @@
                     <td>{{ $vehicle->tonnage }}</td>
                     <td>{{ $vehicle->nametypevehicle->name}}</td>
                     <td>
+                        <a href="{{ route('vehicles.show', $vehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                    </td>
+                    <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <form action="{{ route('vehicles.show', $vehicle->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">Ver Detalles</button>
-                            </form>
+                            
                             <!-- Botón para editar el paciente -->
                             <form action="{{ route('vehicles.edit', $vehicle->id) }}" method="GET">
                                 @csrf

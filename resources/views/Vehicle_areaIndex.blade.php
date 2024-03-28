@@ -23,6 +23,7 @@
                     <th>Area</th>
                     <th>Informacion topografica</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,14 +35,12 @@
                     <td>{{ $vehicle_area->namevehicle->plate }}</td>
                     <td>{{ $vehicle_area->namearea->name }}</td>
                     <td>{{ $vehicle_area->namearea->topographic_information }}</td>
-            
+                    <td>
+                        <a href="{{ route('vehicles.show', $vehicle_area->namevehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                    </td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                           
-                            <form action="{{ route('vehicles.show', $vehicle_area->namevehicle->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">Ver Detalles</button>
-                            </form>
+                    
                             <!-- Botón de eliminación -->
                             <form action="{{ route('vehicle_area.destroy', $vehicle_area->id) }}" method="POST">
                                 @csrf
