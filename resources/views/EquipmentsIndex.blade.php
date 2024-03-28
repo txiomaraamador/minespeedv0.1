@@ -29,8 +29,12 @@
                     <td>{{ $equipment->nametypeequipment->description }}</td>
                     <td>{{ $equipment->namearea->name }}</td>
                     <td>
+                        <a href="{{ route('equipments.show', $equipment->id) }}" style="color: #ee194f;">Mostrar vehiculos en esta area</a>
+                    </td>
+                    <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
+
                             <form action="{{ route('equipments.edit', $equipment->id) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-success">Editar</button>

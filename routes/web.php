@@ -71,6 +71,7 @@ Route::put('/vehicles/{id}',[VehiclesController::class, 'update']);
 Route::delete('/vehicles/delete/{id}',[VehiclesController::class, 'destroy'])->name('vehicles.destroy');
 
 Route::resource('/equipments',EquipmentsController::class);
+Route::get('/equipments/show/{id}',[EquipmentsController::class, 'show']);
 Route::post('/equipments/create',[EquipmentsController::class, 'create']);
 Route::get('/equipments/edit/{id}',[EquipmentsController::class, 'edit']);
 Route::put('/equipments/{id}',[EquipmentsController::class, 'update']);
