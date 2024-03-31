@@ -92,3 +92,4 @@ Route::delete('/vehicle_area/delete/{id}',[Vehicle_areaController::class, 'destr
 
 Route::get('/getEmployeeDetails/{id}', [Employee_vehicleController::class, 'getEmployeeDetails']);
 Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVehicleDetails']);
+Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);

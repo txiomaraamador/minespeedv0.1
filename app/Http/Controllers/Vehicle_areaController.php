@@ -109,4 +109,22 @@ class Vehicle_areaController extends Controller
             return redirect("/vehicle_areas")->with('error', 'Asignacion no encontrado');
         }
     }
+    public function getAreaDetails($id)
+    {
+        $area = Areas::find($id);
+        //dd($employee);
+
+        if ($area) {
+            return response()->json([
+                'topographic_information' => $area->topographic_information,
+                
+
+                // Agrega otros campos que necesites devolver aquí
+            ]);
+        } else {
+            // Si no se encuentra el empleado, devuelve una respuesta de error
+            return response()->json(['error' => 'Area no encontrado'], 404);
+        }
+
+    }
 }
