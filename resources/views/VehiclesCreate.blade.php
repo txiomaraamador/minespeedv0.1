@@ -59,6 +59,7 @@
                         <div class="mb-3">
                             <label for="typevehicles_id" class="form-label">Tipo de vehiculo:</label>
                             <select name="typevehicles_id" id="typevehicles_id" class="form-select" required="required" placeholder="Elige un tipo de vehiculo">
+                                <option value="" disabled selected>Seleccionar tipo de vehiculo</option> <!-- Mensaje predeterminado -->
                                 @foreach($typevehicles as $typevehicle)
                                     <option value="{{ $typevehicle->id }}">{{ $typevehicle->name }}</option>
                                 @endforeach

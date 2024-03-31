@@ -21,6 +21,7 @@
                     <div class="col-md-6">
                         <label for="typeequipments_id" class="form-label">Tipo de equipo:</label>
                         <select name="typeequipments_id" id="typeequipments_id" class="form-select" required="required" placeholder="Elige un tipo de equipo" >
+                            <option value="" disabled selected>Seleccionar equipo</option> <!-- Mensaje predeterminado -->
                             @foreach($typeequipments as $typeequipment)
                                 <option value="{{ $typeequipment->id }}">{{ $typeequipment->description }}</option>
                             @endforeach
@@ -29,6 +30,7 @@
                     <div class="col-md-6">
                         <label for="areas_id" class="form-label">Área donde se encuentra</label>
                         <select name="areas_id" id="areas_id" class="form-select" required="required" placeholder="Elige un área" >
+                            <option value="" disabled selected>Seleccionar área</option> <!-- Mensaje predeterminado -->
                             @foreach($areas as $area)
                                 <option value="{{ $area->id }}">{{ $area->name }}</option>
                             @endforeach

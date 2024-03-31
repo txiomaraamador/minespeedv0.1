@@ -52,6 +52,7 @@
                     <div class="col-md-6">
                         <label for="positions_id" class="form-label">Cargo:</label>
                         <select name="positions_id" id="positions_id" class="form-select" required="required" placeholder="Elige un Cargo" >
+                            <option value="" disabled selected>Seleccionar cargo</option> <!-- Mensaje predeterminado -->
                             @foreach($positions as $position)
                                 <option value="{{ $position->id }}">{{ $position->name }}</option>
                             @endforeach
