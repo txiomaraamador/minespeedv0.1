@@ -89,3 +89,6 @@ Route::post('/vehicle_areas/create',[Vehicle_areaController::class, 'create']);
 Route::get('/vehicle_area/edit/{id}',[Vehicle_areaController::class, 'edit']);
 Route::put('/vehicle_area/{id}',[Vehicle_areaController::class, 'update']);
 Route::delete('/vehicle_area/delete/{id}',[Vehicle_areaController::class, 'destroy'])->name('vehicle_area.destroy');
+
+Route::get('/getEmployeeDetails/{id}', [Employee_vehicleController::class, 'getEmployeeDetails']);
+Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVehicleDetails']);
