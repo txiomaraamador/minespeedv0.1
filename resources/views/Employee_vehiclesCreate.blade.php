@@ -110,6 +110,27 @@
             });
         });
         $(document).ready(function() {
+            $('#identification_number').change(function() {
+                var identification_number = $(this).val();
+                if (identification_number) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/getEmployeeDetailsIdent/' + identification_number,
+                        success: function(response) {
+                            if (response) {
+                                $('#employees_id').val(response.employees_id);
+                                $('#email').val(response.email);
+                                $('#license').val(response.license);
+                                $('#positions_id').val(response.positions_id);
+
+                                // Llena otros campos aquí con la respuesta obtenida
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        $(document).ready(function() {
             $('#vehicles_id').change(function() {
                 var vehicleId = $(this).val();
                 if (vehicleId) {
