@@ -22,7 +22,9 @@
                     <th>Placa</th>
                     <th>Chofer</th>
                     <th></th>
+                    @if(Auth::user()->role !== 'visualizer')
                     <th></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +38,7 @@
                     <td>
                         <a href="{{ route('vehicles.show', $employee_vehicle->namevehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
                     </td>
+                    @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         
@@ -47,6 +50,7 @@
                             </form>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

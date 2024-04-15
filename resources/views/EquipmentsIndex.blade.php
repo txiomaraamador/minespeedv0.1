@@ -31,6 +31,7 @@
                     <td>
                         <a href="{{ route('equipments.show', $equipment->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
                     </td>
+                    @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
@@ -47,6 +48,7 @@
                             </form>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

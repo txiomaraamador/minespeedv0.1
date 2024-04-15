@@ -23,7 +23,9 @@
                     <th>Area</th>
                     <th>Informacion topografica</th>
                     <th></th>
+                    @if(Auth::user()->role !== 'visualizer')
                     <th></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +40,7 @@
                     <td>
                         <a href="{{ route('vehicles.show', $vehicle_area->namevehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
                     </td>
+                    @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     
@@ -49,6 +52,7 @@
                             </form>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

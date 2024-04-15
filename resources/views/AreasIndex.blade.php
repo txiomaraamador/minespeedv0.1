@@ -18,8 +18,11 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Informacion Topográfica</th>
+                    
                     <th></th>
+                    @if(Auth::user()->role !== 'visualizer')
                     <th></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -27,10 +30,12 @@
                 <tr>
                     <td>{{ $area->name }}</td>
                     <td>{{ $area->topographic_information }}</td>
+                    
                     <td>
                         <a href="{{ route('areas.show', $area->id) }}" style="color: #ee194f;">Mostrar vehiculos en esta area</a>
 
                     </td>
+                    @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
@@ -46,6 +51,7 @@
                             </form>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

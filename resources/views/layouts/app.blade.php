@@ -21,11 +21,67 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> 
 </head>
 <body>
+    @if(Auth::check() && Auth::user()->role == 'visualizer')
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                {{ config('app.name', 'MineSpeed') }}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('equipments.index') }}">Ver Equipos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('employees.index') }}">Ver Empleados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('areas.index') }}">Ver Áreas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVehicles" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Vehículos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownVehicles">
+                            <li><a class="dropdown-item" href="{{ route('vehicles.index') }}">Ver Vehículos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('employee_vehicles.index') }}">Ver Vehículos por Empleado</a></li>
+                            <li><a class="dropdown-item" href="{{ route('vehicle_areas.index') }}">Ver Vehículos en Áreas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Cerrar sesión') }}</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
     
+    
+    @endif
+
+
+
+
+
+
+    @if(Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'operator'))
     <nav class="navbar bg-body-tertiary fixed-top">
         @auth
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/home">
                 {{ config('app.name', 'MineSpeed') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -158,7 +214,7 @@
     </div>
     @endauth
     </nav>
-
+@endif
         <div class="container mt-5">
         @yield('content')
         </div>
