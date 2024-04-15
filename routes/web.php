@@ -11,6 +11,7 @@ use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\Employee_vehicleController;
 use App\Http\Controllers\Vehicle_areaController;
+use App\Http\Controllers\Admin\UserController;
 
 
 /*
@@ -94,3 +95,5 @@ Route::get('/getEmployeeDetails/{id}', [Employee_vehicleController::class, 'getE
 Route::get('/getEmployeeDetailsIdent/{id}', [Employee_vehicleController::class, 'getEmployeeDetailsIdent']);
 Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVehicleDetails']);
 Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);
+
+Route::resource('/users',UserController::class);

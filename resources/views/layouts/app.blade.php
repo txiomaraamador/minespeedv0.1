@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> 
 </head>
 <body>
+    
     <nav class="navbar bg-body-tertiary fixed-top">
+        @auth
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 {{ config('app.name', 'MineSpeed') }}
@@ -109,6 +111,15 @@
                                     <li><a class="dropdown-item" href="{{ route('positions.create') }}">Agregar Cargo</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Usuarios
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('users.index') }}">Ver Usuarios</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('register') }}">Registrar Usuarios</a></li>
+                                </ul>
+                            </li>
                         
                         
                 <hr style="color: #000000;" />
@@ -117,9 +128,6 @@
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @else
                     <li class="nav-item dropdown">
@@ -146,6 +154,7 @@
         </div>
     </div>
     </div>
+    @endauth
     </nav>
 
         <div class="container mt-5">
