@@ -99,6 +99,7 @@ class EmployeesController extends Controller
                 $employee->lastname = $request->input('lastname');
                 $employee->email = $request->input('email');
                 $employee->license = $request->input('license');
+                $employee->status = $request->input('status');
                 $employee->positions_id = $request->input('positions_id');
                
         

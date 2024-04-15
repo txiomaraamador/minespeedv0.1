@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('photo', 150)->nullable();
             $table->unsignedBigInteger('employee_vehicle_id');
             $table->unsignedBigInteger('equipments_id');
-            $table->foreign('employee_vehicle_id')->references('id')->on('employee_vehicle');
+            $table->foreign('employee_vehicle_id')->references('id')->on('employee_vehicles');
             $table->foreign('equipments_id')->references('id')->on('equipments');
             $table->timestamps();
         });
