@@ -22,6 +22,17 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        // Insertar el primer usuario administrador
+        DB::table('users')->insert([
+            'name' => 'Administrador',
+            'lastname' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin'), // Recuerda cambiar 'tu_contraseña' por la contraseña real
+            'role' => 'admin',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     /**
