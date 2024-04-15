@@ -138,6 +138,16 @@
                         <li><a class="dropdown-item" href="{{ route('areas.create') }}">Agregar Área</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Correo para alerta
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('emails.index') }}">Ver Correos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('emails.create') }}">Agregar Correos</a></li>
+                    </ul>
+                </li>
+
                 @if(Auth::user()->role === 'admin')
                 <hr style="color: #000000;" />
                 
