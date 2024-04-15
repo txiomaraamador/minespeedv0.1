@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lastname', 45);
             $table->string('email', 100);
             $table->string('license', 45);
-            $table->enum('status', ['activo', 'inactivo']);
+            $table->enum('status', ['activo', 'inactivo'])->default('activo'); // Establece el valor predeterminado como 'activo'
             $table->unsignedBigInteger('positions_id');
             $table->foreign('positions_id')->references('id')->on('positions');
             $table->timestamps();
