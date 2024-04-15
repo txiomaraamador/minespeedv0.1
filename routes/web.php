@@ -11,6 +11,7 @@ use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\EquipmentsController;
 use App\Http\Controllers\Employee_vehicleController;
 use App\Http\Controllers\Vehicle_areaController;
+use App\Http\Controllers\Admin\UserController;
 
 
 /*
@@ -33,6 +34,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/areas',AreasController::class);
+Route::get('/areas/show/{id}',[AreasController::class, 'show']);
 Route::post('/areas/create',[AreasController::class, 'create']);
 Route::get('/areas/edit/{id}',[AreasController::class, 'edit']);
 Route::put('/areas/{id}',[AreasController::class, 'update']);
@@ -63,12 +65,14 @@ Route::put('/employees/{id}',[EmployeesController::class, 'update']);
 Route::delete('/employees/delete/{id}',[EmployeesController::class, 'destroy'])->name('employees.destroy');
 
 Route::resource('/vehicles',VehiclesController::class);
+Route::get('/vehicles/show/{id}',[VehiclesController::class, 'show']);
 Route::post('/vehicles/create',[VehiclesController::class, 'create']);
 Route::get('/vehicles/edit/{id}',[VehiclesController::class, 'edit']);
 Route::put('/vehicles/{id}',[VehiclesController::class, 'update']);
 Route::delete('/vehicles/delete/{id}',[VehiclesController::class, 'destroy'])->name('vehicles.destroy');
 
 Route::resource('/equipments',EquipmentsController::class);
+Route::get('/equipments/show/{id}',[EquipmentsController::class, 'show']);
 Route::post('/equipments/create',[EquipmentsController::class, 'create']);
 Route::get('/equipments/edit/{id}',[EquipmentsController::class, 'edit']);
 Route::put('/equipments/{id}',[EquipmentsController::class, 'update']);
@@ -81,8 +85,15 @@ Route::put('/employee_vehicles/{id}',[Employee_vehicleController::class, 'update
 Route::delete('/employee_vehicles/delete/{id}',[Employee_vehicleController::class, 'destroy'])->name('employee_vehicles.destroy');
 
 
-Route::resource('/vehicle_area',Vehicle_areaController::class);
-Route::post('/vehicle_area/create',[Vehicle_areaController::class, 'create']);
+Route::resource('/vehicle_areas',Vehicle_areaController::class);
+Route::post('/vehicle_areas/create',[Vehicle_areaController::class, 'create']);
 Route::get('/vehicle_area/edit/{id}',[Vehicle_areaController::class, 'edit']);
 Route::put('/vehicle_area/{id}',[Vehicle_areaController::class, 'update']);
 Route::delete('/vehicle_area/delete/{id}',[Vehicle_areaController::class, 'destroy'])->name('vehicle_area.destroy');
+
+Route::get('/getEmployeeDetails/{id}', [Employee_vehicleController::class, 'getEmployeeDetails']);
+Route::get('/getEmployeeDetailsIdent/{id}', [Employee_vehicleController::class, 'getEmployeeDetailsIdent']);
+Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVehicleDetails']);
+Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);
+
+Route::resource('/users',UserController::class);

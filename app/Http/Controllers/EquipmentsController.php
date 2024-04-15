@@ -56,11 +56,11 @@ class EquipmentsController extends Controller
     {
         $equipment = Equipments::find($id);
 
-        if ($equipment) {
-            return view('EquipmentShow', compact('equipment'));
-        } else {
-            return redirect()->route('equipments.index')->with('error', 'Equipo no encontrado.');
-        }
+        //$area = Areas::where('id', $equipment->areas_id)->get();
+        //dd($area);
+
+        return view('EquipmentsShow', compact('equipment'));
+
     }
 
     public function edit($id)

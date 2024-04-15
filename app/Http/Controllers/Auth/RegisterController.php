@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
     }
 
     /**
@@ -54,8 +54,13 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string', 'max:255'],
-        ]);
+        ])->after(function ($validator) {
+            if (auth()->user() && auth()->user()->role !== 'admin') {
+                $validator->errors()->add('role', 'Only administrators can register new users.');
+            }
+        });
     }
+    
 
     /**
      * Create a new user instance after a valid registration.

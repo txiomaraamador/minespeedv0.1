@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Typevehicles; 
 use App\Models\Vehicles;
+use App\Models\Vehicle_area;
+use App\Models\Areas;
+use App\Models\Employee_vehicle;
+use App\Models\Employees;
 
 class VehiclesController extends Controller
 {
@@ -56,16 +60,27 @@ class VehiclesController extends Controller
         }
     }
 
-   /* public function show($id)
+    public function show($id)
     {
+        //obtiene el id del vehiculo para mostrar
         $vehicle = Vehicles::find($id);
 
-        if ($vehicle) {
-            return view('VehiclesShow', compact('vehicle'));
-        } else {
-            return redirect()->route('vehicles.index')->with('error', 'vehicle no encontrado.');
-        }
-    }*/
+        //busca en la tablas los registros que concidan con el id del vehiculo
+        $employee_vehicle = Employee_vehicle::where('vehicles_id', $vehicle->id)->get();
+        $vehicle_area = Vehicle_area::where('vehicles_id', $vehicle->id)->get();
+
+        // Obtén los IDs de empleados asociados al vehiculo
+        $employee_ids = $employee_vehicle->pluck('employees_id')->toArray();
+        $area_ids = $vehicle_area->pluck('areas_id')->toArray();
+
+        $employees = Employees::with('nameposition')->whereIn('id', $employee_ids)->get();
+        $areas = Areas::all()->whereIn('id', $area_ids);
+
+
+        return view('VehiclesShow', compact('vehicle', 'employees', 'areas'));
+      
+         
+    }
 
     public function edit($id)
     {

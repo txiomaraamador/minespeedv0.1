@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br>
 <div class="card bg-light text-center w-100 mb-10">
     <div class="card-body">
         <h1 class="card-title mx-auto">VELOCIMETRO</h1>
@@ -15,7 +15,7 @@
                     <th scope="col"></th>
                     <th scope="col">Empleado</th>
                     <th scope="col">No. de vehiculo</th>
-                    <th scope="col">Velocidad de rebace</th>
+                    <th scope="col">Velocidad</th>
                     <th scope="col">Area</th>
                     <th scope="col"></th>
                 </tr>
@@ -27,7 +27,9 @@
                     <td>07</td>
                     <td>200km/h</td>
                     <td>Zona de descarga</td>
-                    <td>Ver detalles</td>
+                    <td>
+                        <button type="submit" class="btn btn-sm btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</button>
+                    </td>
                 </tr>
                
             </tbody>

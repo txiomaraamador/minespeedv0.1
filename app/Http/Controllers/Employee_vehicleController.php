@@ -12,7 +12,7 @@ class Employee_vehicleController extends Controller
     public function index(Request $request)
     {
         $employee_vehicles = Employee_vehicle::with('nameemployee','namevehicle')->get();
-        return view('Employee_vehiclesIndex', compact('employee_vehicles'));
+        return view('Employee_vehicleIndex', compact('employee_vehicles'));
     }
 
     public function create()
@@ -108,5 +108,68 @@ class Employee_vehicleController extends Controller
         } else {
             return redirect("/employee_vehicles")->with('error', 'Asignacion no encontrado');
         }
+    }
+    public function getEmployeeDetails($id)
+    {
+        $employee = Employees::with('nameposition')->find($id);
+        //dd($employee);
+
+
+        if ($employee) {
+            return response()->json([
+                'identification_number' => $employee->identification_number,
+                'email' => $employee->email,
+                'license' => $employee->license,
+                'positions_id' => $employee->nameposition->name,
+                // Agrega otros campos que necesites devolver aquí
+            ]);
+        } else {
+            // Si no se encuentra el empleado, devuelve una respuesta de error
+            return response()->json(['error' => 'Empleado no encontrado'], 404);
+        }
+    }
+        public function getEmployeeDetailsIdent($identification_number)
+        {
+            $employee = Employees::where('identification_number', $identification_number)->with('nameposition')->first();
+           // dd($employee);
+    
+            if ($employee) {
+                return response()->json([
+                    'employees_id' => $employee->id,
+                    'name' => $employee->name,
+                    'email' => $employee->email,
+                    'license' => $employee->license,
+                    'positions_id' => $employee->nameposition->name,
+                    // Agrega otros campos que necesites devolver aquí
+                ]);
+            } else {
+                // Si no se encuentra el empleado, devuelve una respuesta de error
+                return response()->json(['error' => 'Empleado no encontrado'], 404);
+            }
+    
+        }
+
+
+    public function getVehicleDetails($id)
+    {
+        $vehicle = Vehicles::with('nametypevehicle')->find($id);
+        //dd($employee);
+
+        if ($vehicle) {
+            return response()->json([
+                'plate' => $vehicle->plate,
+                'make' => $vehicle->make,
+                'model' => $vehicle->model,
+                'manufacture' => $vehicle->manufacture,
+                'tonnage' => $vehicle->tonnage,
+                'typevehicles_id' => $vehicle->nametypevehicle->name,
+
+                // Agrega otros campos que necesites devolver aquí
+            ]);
+        } else {
+            // Si no se encuentra el empleado, devuelve una respuesta de error
+            return response()->json(['error' => 'Vehiculo no encontrado'], 404);
+        }
+
     }
 }

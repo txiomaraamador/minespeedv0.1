@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', ' Areas Index')
+@section('title', ' Users Index')
 
 @section('content')
 
 <div class="container mt-4">
     <div class="row">
         <div class="col">
-            <h1 class="display-4 mb-4">Listado de Areas</h1>
+            <h1 class="display-4 mb-4">Listado de Usuarios</h1>
         </div>
         
     </div>
@@ -17,41 +17,36 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Informacion Topográfica</th>
-                    
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
                     <th></th>
-                    @if(Auth::user()->role !== 'visualizer')
-                    <th></th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
-                @foreach ($areas as $area)
+                @foreach ($users as $user)
                 <tr>
-                    <td>{{ $area->name }}</td>
-                    <td>{{ $area->topographic_information }}</td>
+                   
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->lastname }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role }}</td>
                     
-                    <td>
-                        <a href="{{ route('areas.show', $area->id) }}" style="color: #ee194f;">Mostrar vehiculos en esta area</a>
-
-                    </td>
-                    @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
-                            <form action="{{ route('areas.edit', $area->id) }}" method="GET">
+                            <form action="{{ route('users.edit', $user->id) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-success">Editar</button>
                             </form>
                             <!-- Botón de eliminación -->
-                            <form action="{{ route('areas.destroy', $area->id) }}" method="POST">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta área?')">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este Usuario?')">Eliminar</button>
                             </form>
                         </div>
                     </td>
-                    @endif
                 </tr>
                 @endforeach
             </tbody>
