@@ -83,8 +83,8 @@
                                 <select id="role" class="form-select @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
                                     <option value="">Selecciona un rol</option>
                                     <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Administrador</option>
-                                    <option value="user" {{ old('role') == 'operator' ? 'selected' : '' }}>Operador</option>
-                                    <option value="user" {{ old('role') == 'visualizer' ? 'selected' : '' }}>Visualizador</option>
+                                    <option value="operator" {{ old('role') == 'operator' ? 'selected' : '' }}>Operador</option>
+                                    <option value="visualizer" {{ old('role') == 'visualizer' ? 'selected' : '' }}>Visualizador</option>
                                     <!-- Agrega más opciones según necesites -->
                                 </select>
                         
