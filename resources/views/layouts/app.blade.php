@@ -82,7 +82,9 @@
                         <li><a class="dropdown-item" href="{{ route('areas.create') }}">Agregar Área</a></li>
                     </ul>
                 </li>
+                @if(Auth::user()->role === 'admin')
                 <hr style="color: #000000;" />
+                
                 <h5><a class="nav-link active" aria-current="page" href="#">Catalogos</a></h5>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,7 +122,7 @@
                                     <li><a class="dropdown-item" href="{{ route('register') }}">Registrar Usuarios</a></li>
                                 </ul>
                             </li>
-                        
+                @endif       
                         
                 <hr style="color: #000000;" />
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cuenta</h5>
