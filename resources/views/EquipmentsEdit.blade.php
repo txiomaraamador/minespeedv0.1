@@ -31,7 +31,10 @@
             </select>
         </div>
         <br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{{ route('areas.index') }}" class="btn btn-secondary">Cancelar</a>
         <button type="submit" class="btn btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Guardar Cambios</button>
+        </div>
     </form>
 </div>
 
