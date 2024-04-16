@@ -45,10 +45,7 @@
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
-                            <form action="{{ route('users.edit', $user->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">Editar</button>
-                            </form>
+                        
                             <!-- Botón de eliminación -->
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
