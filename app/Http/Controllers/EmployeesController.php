@@ -10,9 +10,16 @@ class EmployeesController extends Controller
 {
     public function index(Request $request)
     {
-        
+      // Verificar si el usuario logueado es administrador
+    if ($request->user()->role == 'admin') {
+        // Mostrar todos los empleados
         $employees = Employees::with('nameposition')->get();
-        return view('EmployeesIndex', compact('employees'));
+    } else {
+        // Mostrar solo empleados activos para otros usuarios
+        $employees = Employees::with('nameposition')->where('status', 'activo')->get();
+    }
+
+    return view('EmployeesIndex', compact('employees'));
         
     }
 

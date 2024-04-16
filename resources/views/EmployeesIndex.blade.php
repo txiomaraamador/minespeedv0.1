@@ -32,7 +32,10 @@
                     <th>Correo</th>
                     <th>Licencia</th>
                     <th>Cargo</th>
+                    @if(Auth::user()->role == 'admin')
+                    <th>Estado</th>
                     <th></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +47,9 @@
                     <td>{{ $employee->email }}</td>
                     <td>{{ $employee->license }}</td>
                     <td>{{ $employee->nameposition->name}}</td>
-                    @if(Auth::user()->role !== 'visualizer')
+                    @if(Auth::user()->role == 'admin')
+                    <td>{{ $employee->status }}</td>
+                    
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <!-- Botón para editar el paciente -->
