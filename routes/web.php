@@ -14,6 +14,8 @@ use App\Http\Controllers\Vehicle_areaController;
 use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\Admin\UserController;
 
+use App\Mail\CorreosMailable;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -105,3 +107,21 @@ Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVe
 Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);
 
 Route::resource('/users',UserController::class);
+
+use App\Models\Emails; // Asegúrate de importar el modelo Email si no lo has hecho aún
+
+Route::get('correos', function(){
+    // Obtener todos los correos de la base de datos
+    $emails = Emails::pluck('email')->toArray();
+
+    // Verificar que hay al menos una dirección de correo
+    if (!empty($emails)) {
+        // Enviar el correo a cada dirección de correo electrónico
+        foreach ($emails as $email) {
+            Mail::to($email)->send(new CorreosMailable);
+        }
+        return redirect("/home")->with('success', 'Se enviaron los correos correctamente');
+    } else {
+        return redirect("/home")->with('error', 'No hay direcciones de correo electrónico en la base de datos');
+    }
+})->name('correos');
