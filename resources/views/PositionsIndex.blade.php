@@ -5,12 +5,21 @@
 @section('content')
 
 <div class="container mt-4">
-    <div class="row">
-        <div class="col">
-            <h1 class="display-4 mb-4">Listado de Cargos</h1>
+    <nav class="navbar border-bottom border-body">
+        <div class="container-fluid">
+            <h1 class="display-4 mb-4">Listado de Puestos</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                @if(Auth::user()->role !== 'visualizer')
+                <a class="dropdown-item" href="{{ route('positions.create') }}">
+                    <button class="btn btn-primary" 
+                    style="background-color: #ee194f; border-color: #ee194f; color: #fff;">
+                        Agregar Puesto
+                    </button>
+                </a>
+                @endif
+            </div>
         </div>
-        
-    </div>
+    </nav>
 
     <div class="table-responsive">
         <table class="table table-hover">

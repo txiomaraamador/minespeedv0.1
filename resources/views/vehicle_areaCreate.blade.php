@@ -64,7 +64,8 @@
                     </div>
                 </div>
                 <br>
-                <div class="col-md-12 d-flex justify-content-end">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ route('vehicle_areas.index') }}" class="btn btn-secondary">Cancelar</a>
                     <button type="submit" class="btn btn-primary" style="background-color: #ee194f; border-color: #ee194f; color: #fff;">Guardar</button>
                 </div>
             </form>
