@@ -105,3 +105,7 @@ Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVe
 Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);
 
 Route::resource('/users',UserController::class);
+
+use App\Http\Controllers\WhatsAppController;
+
+Route::get('/msjwhatsapp', [WhatsappController::class, 'enviarMensajeWhatsApp']);
