@@ -14,6 +14,8 @@ use App\Http\Controllers\Vehicle_areaController;
 use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\Admin\UserController;
 
+use App\Mail\CorreosMailable;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -105,3 +107,7 @@ Route::get('/getVehicleDetails/{id}', [Employee_vehicleController::class, 'getVe
 Route::get('/getAreaDetails/{id}', [Vehicle_areaController::class, 'getAreaDetails']);
 
 Route::resource('/users',UserController::class);
+
+use App\Http\Controllers\CorreosController;
+
+Route::get('correos', [CorreosController::class, 'getMail'])->name('correos');
