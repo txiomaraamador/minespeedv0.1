@@ -31,10 +31,12 @@ class AreasController extends Controller
             $messages = [
                 'name.required' => 'El nombre es obligatorio.',
                 'name.max' => 'El nombre no debe tener más de :max caracteres.',
-                
+                'topographic_information.max' => 'La infomacion topografica no debe de tener mas de :max caracteres',
+                'topographic_information.required' => 'El campo es obligatorio.',
             ];
             $this->validate($request, [
                 'name' => 'required|string|max:255',
+                'topographic_information' => 'required|string|max:255',
                 
             ], $messages);
             // Crear un nuevo paciente
@@ -79,10 +81,17 @@ class AreasController extends Controller
     {
        // dd($request->all());
                 // Validación de datos
+                $messages = [
+                    'name.required' => 'El nombre es obligatorio.',
+                    'name.max' => 'El nombre no debe tener más de :max caracteres.',
+                    'topographic_information.max' => 'La infomacion topografica no debe de tener mas de :max caracteres',
+                    'topographic_information.required' => 'El campo es obligatorio.',
+                ];
                 $this->validate($request, [
                     'name' => 'required|string|max:255',
+                    'topographic_information' => 'required|string|max:255',
                     
-                ]);
+                ], $messages);
         
                 // Obtener el area a actualizar
                 $area = Areas::find($id);
