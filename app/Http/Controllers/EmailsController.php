@@ -26,15 +26,21 @@ class EmailsController extends Controller
     public function store(Request $request)
     {
         try {
-            $messages = [
-                'info.required' => 'El nombre es obligatorio.',
-                'info.max' => 'El nombre no debe tener más de :max caracteres.',
-                
-            ];
-            $this->validate($request, [
+            $request->validate([
                 'info' => 'required|string|max:255',
-                
-            ], $messages);
+                'email' => 'required|email|unique:emails,email',
+                'phone' => 'required|string|max:20',
+            ], [
+                'info.required' => 'El campo Información es obligatorio.',
+                'info.string' => 'El campo Información debe ser una cadena de texto.',
+                'info.max' => 'El campo Información no puede exceder los 255 caracteres.',
+                'email.required' => 'El campo Correo es obligatorio.',
+                'email.email' => 'El campo Correo debe ser una dirección de correo electrónico válida.',
+                'email.unique' => 'Este correo electrónico ya ha sido registrado.',
+                'phone.required' => 'El campo Celular es obligatorio.',
+                'phone.string' => 'El campo Celular debe ser una cadena de texto.',
+                'phone.max' => 'El campo Celular no puede exceder los 20 caracteres.',
+            ]);
             // Crear un nuevo paciente
             $email = new Emails();
             $email->info = $request->input('info');
@@ -76,9 +82,20 @@ class EmailsController extends Controller
     {
        // dd($request->all());
                 // Validación de datos
-                $this->validate($request, [
+                $request->validate([
                     'info' => 'required|string|max:255',
-                    
+                    'email' => 'required|email|unique:emails,email',
+                    'phone' => 'required|string|max:20',
+                ], [
+                    'info.required' => 'El campo Información es obligatorio.',
+                    'info.string' => 'El campo Información debe ser una cadena de texto.',
+                    'info.max' => 'El campo Información no puede exceder los 255 caracteres.',
+                    'email.required' => 'El campo Correo es obligatorio.',
+                    'email.email' => 'El campo Correo debe ser una dirección de correo electrónico válida.',
+                    'email.unique' => 'Este correo electrónico ya ha sido registrado.',
+                    'phone.required' => 'El campo Celular es obligatorio.',
+                    'phone.string' => 'El campo Celular debe ser una cadena de texto.',
+                    'phone.max' => 'El campo Celular no puede exceder los 20 caracteres.',
                 ]);
         
                 // Obtener el area a actualizar

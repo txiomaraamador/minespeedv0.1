@@ -103,13 +103,14 @@ class EmployeesController extends Controller
                     'email' => 'El campo :attribute debe ser una dirección de correo electrónico válida.',
                     'exists' => 'El valor seleccionado para :attribute no es válido.',
                     'numeric' => 'El campo :attribute debe contener solo números.',
+                    'email.unique' => 'Este correo electrónico ya ha sido registrado.',
                 ];
             
                 $request->validate([
                     'identification_number' => 'required|numeric',
                     'name' => 'required|string|max:255',
                     'lastname' => 'required|string|max:255',
-                    'email' => 'required|email|max:255',
+                    'email' => 'required|email|unique:emails,email|max:255',
                     'license' => 'required|numeric',
                     'positions_id' => 'required|exists:positions,id',
                 ], $mensajes);
