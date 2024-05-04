@@ -30,15 +30,22 @@ class VehiclesController extends Controller
     public function store(Request $request)
     {
         try {
-            $messages = [
-                'make.required' => 'El nombre es obligatorio.',
-                'make.max' => 'El nombre no debe tener más de :max caracteres.',
-                
+            $mensajes = [
+                'required' => 'El campo :attribute es obligatorio.',
+                'string' => 'El campo :attribute debe ser una cadena de caracteres.',
+                'max' => 'El campo :attribute no puede tener más de :max caracteres.',
+                'numeric' => 'El campo :attribute debe contener solo números.',
             ];
-            $this->validate($request, [
+    
+            $request->validate([
+                'serial_number' => 'required|numeric|max:255',
                 'make' => 'required|string|max:255',
-                
-            ], $messages);
+                'model' => 'required|string|max:255',
+                'manufacture' => 'required|string|max:255',
+                'plate' => 'required|string|max:255',
+                'tonnage' => 'required|string|max:255',
+                'typevehicles_id' => 'required|exists:type_vehicles,id',
+            ], $mensajes);
             // Crear un nuevo paciente
             $vehicle = new Vehicles();
             $vehicle->serial_number = $request->input('serial_number');
@@ -96,10 +103,22 @@ class VehiclesController extends Controller
     {
        // dd($request->all());
                 // Validación de datos
-                $this->validate($request, [
+                $mensajes = [
+                    'required' => 'El campo :attribute es obligatorio.',
+                    'string' => 'El campo :attribute debe ser una cadena de caracteres.',
+                    'max' => 'El campo :attribute no puede tener más de :max caracteres.',
+                    'numeric' => 'El campo :attribute debe contener solo números.',
+                ];
+        
+                $request->validate([
+                    'serial_number' => 'required|numeric|max:255',
                     'make' => 'required|string|max:255',
-                    
-                ]);
+                    'model' => 'required|string|max:255',
+                    'manufacture' => 'required|string|max:255',
+                    'plate' => 'required|string|max:255',
+                    'tonnage' => 'required|string|max:255',
+                    'typevehicles_id' => 'required|exists:type_vehicles,id',
+                ], $mensajes);
         
                 // Obtener el area a actualizar
                 $vehicle = Vehicles::find($id);
