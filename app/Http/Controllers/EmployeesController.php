@@ -33,15 +33,24 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         try {
-            $messages = [
-                'name.required' => 'El nombre es obligatorio.',
-                'name.max' => 'El nombre no debe tener más de :max caracteres.',
-                
+            $mensajes = [
+                'required' => 'El campo :attribute es obligatorio.',
+                'string' => 'El campo :attribute debe ser una cadena de caracteres.',
+                'max' => 'El campo :attribute no puede tener más de :max caracteres.',
+                'email' => 'El campo :attribute debe ser una dirección de correo electrónico válida.',
+                'exists' => 'El valor seleccionado para :attribute no es válido.',
+                'numeric' => 'El campo :attribute debe contener solo números.',
             ];
-            $this->validate($request, [
+        
+            $request->validate([
+                'identification_number' => 'required|numeric',
                 'name' => 'required|string|max:255',
-                
-            ], $messages);
+                'lastname' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'license' => 'required|numeric',
+                'positions_id' => 'required|exists:positions,id',
+            ], $mensajes);
+
             // Crear un nuevo paciente
             $employee = new Employees();
             $employee->identification_number = $request->input('identification_number');
@@ -87,10 +96,23 @@ class EmployeesController extends Controller
     {
        // dd($request->all());
                 // Validación de datos
-                $this->validate($request, [
+                $mensajes = [
+                    'required' => 'El campo :attribute es obligatorio.',
+                    'string' => 'El campo :attribute debe ser una cadena de caracteres.',
+                    'max' => 'El campo :attribute no puede tener más de :max caracteres.',
+                    'email' => 'El campo :attribute debe ser una dirección de correo electrónico válida.',
+                    'exists' => 'El valor seleccionado para :attribute no es válido.',
+                    'numeric' => 'El campo :attribute debe contener solo números.',
+                ];
+            
+                $request->validate([
+                    'identification_number' => 'required|numeric',
                     'name' => 'required|string|max:255',
-                    
-                ]);
+                    'lastname' => 'required|string|max:255',
+                    'email' => 'required|email|max:255',
+                    'license' => 'required|numeric',
+                    'positions_id' => 'required|exists:positions,id',
+                ], $mensajes);
         
                 // Obtener el area a actualizar
                 $employee = Employees::find($id);

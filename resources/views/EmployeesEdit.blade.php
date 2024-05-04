@@ -2,6 +2,8 @@
 
 @section('title', 'Employees Edit')
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 <br>
 <div class="container mt-5">
     <div class="card">
@@ -14,9 +16,18 @@
                 
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="identification_number" class="form-label">No. Identificación</label>
-                            <input type="text" class="form-control" id="identification_number" name="identification_number" value="{{ $employee->identification_number }}">
+                        <label for="identification_number" class="form-label">No. Identificacion</label>
+                        <div class="mb-3 input-group">
+                            
+                            <input type="text" class="form-control{{ $errors->has('identification_number') ? ' is-invalid' : '' }}" id="identification_number" name="identification_number" value="{{ $employee->identification_number }}">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese en numero de identificacion de su empleado. Solo se aceptan numeros ">
+                                <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
+                            </span>
+                            @error('identification_number')
+                            <div class="invalid-feedback" style="color: red;">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -35,15 +46,31 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo</label>
-                            <input type="text" class="form-control" id="email" name="email" value="{{ $employee->email }}">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <div class="mb-3 input-group">   
+                            <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" value="{{ $employee->email }}">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el correo de su empleado. Ejemplo: example@example.com">
+                                <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
+                            </span>
+                            @error('email')
+                            <div class="invalid-feedback" style="color: red;">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="license" class="form-label">Licencia</label>
-                            <input type="text" class="form-control" id="license" name="license" value="{{ $employee->license }}">
+                        <label for="license" class="form-label">Licencia</label>
+                        <div class="mb-3 input-group" >
+                            <input type="text" class="form-control{{ $errors->has('license') ? ' is-invalid' : '' }}" id="license" name="license" value="{{ $employee->license }}">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la licencia de manejo.">
+                                <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
+                            </span>
+                            @error('license')
+                            <div class="invalid-feedback" style="color: red;">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
