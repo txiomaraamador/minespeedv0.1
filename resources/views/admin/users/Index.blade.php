@@ -18,6 +18,11 @@
                     </button>
                 </a>
                 @endif
+                <div class="input-group mb-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" id="searchInput" placeholder="Buscar en la lista..." aria-label="Search">
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
@@ -33,19 +38,15 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="usersTableBody">
                 @foreach ($users as $user)
                 <tr>
-                   
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->lastname }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
-                    
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <!-- Botón para editar el paciente -->
-                        
                             <!-- Botón de eliminación -->
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
@@ -60,5 +61,50 @@
         </table>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('searchInput');
+        const usersTableBody = document.getElementById('usersTableBody');
+        const users = {!! json_encode($users) !!}; // Convert PHP array to JavaScript object
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filteredUsers = users.filter(user => {
+                return Object.values(user).some(value =>
+                    typeof value === 'string' && value.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            renderUsers(filteredUsers);
+        });
+
+        function renderUsers(users) {
+            usersTableBody.innerHTML = '';
+
+            users.forEach(user => {
+                const row = `
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.lastname}</td>
+                        <td>${user.email}</td>
+                        <td>${user.role}</td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <form action="{{ route('users.destroy', '') }}/${user.id}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este Usuario?')">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                usersTableBody.innerHTML += row;
+            });
+        }
+    });
+</script>
 
 @endsection
