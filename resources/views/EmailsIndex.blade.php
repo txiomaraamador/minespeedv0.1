@@ -18,10 +18,15 @@
                     </button>
                 </a>
                 @endif
-    
+                <div class="input-group mb-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" id="searchInput" placeholder="Buscar en la lista..." aria-label="Search">
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
+
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -34,7 +39,7 @@
                     @endif
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="emailsTableBody">
                 @foreach ($emails as $email)
                 <tr>
                     <td>{{ $email->info }}</td>
@@ -43,8 +48,7 @@
                     @if(Auth::user()->role !== 'visualizer')
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            
-                            <!-- Botón para editar el paciente -->
+                            <!-- Botón para editar el correo -->
                             <form action="{{ route('emails.edit', $email->id) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-success">Editar</button>
@@ -65,6 +69,54 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('searchInput');
+        const emailsTableBody = document.getElementById('emailsTableBody');
+        const emails = {!! json_encode($emails) !!}; // Convert PHP array to JavaScript object
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filteredEmails = emails.filter(email => {
+                return Object.values(email).some(value =>
+                    typeof value === 'string' && value.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            renderEmails(filteredEmails);
+        });
+
+        function renderEmails(emails) {
+            emailsTableBody.innerHTML = '';
+
+            emails.forEach(email => {
+                const row = `
+                    <tr>
+                        <td>${email.info}</td>
+                        <td>${email.email}</td>
+                        <td>${email.phone}</td>
+                        @if(Auth::user()->role !== 'visualizer')
+                        <td>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <form action="{{ route('emails.edit', '') }}/${email.id}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-success">Editar</button>
+                                </form>
+                                <form action="{{ route('emails.destroy', '') }}/${email.id}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este correo?')">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                        @endif
+                    </tr>
+                `;
+                emailsTableBody.innerHTML += row;
+            });
+        }
+    });
+</script>
+
 @endsection
-
-
