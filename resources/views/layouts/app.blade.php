@@ -48,7 +48,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownVehicles">
                             <li><a class="dropdown-item" href="{{ route('vehicles.index') }}">Ver Vehículos</a></li>
                             <li><a class="dropdown-item" href="{{ route('employee_vehicles.index') }}">Ver Vehículos por Empleado</a></li>
-                            <li><a class="dropdown-item" href="{{ route('vehicle_areas.index') }}">Ver Vehículos en Áreas</a></li>
+                        
                         </ul>
                     </li>
                 </ul>
@@ -112,11 +112,9 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('vehicles.index') }}">Ver Vehiculos</a></li>
                         <li><a class="dropdown-item" href="{{ route('employee_vehicles.index') }}">Ver Vehiculos por empleado</a></li>
-                        <li><a class="dropdown-item" href="{{ route('vehicle_areas.index') }}">Ver Vehiculos Area</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('vehicles.create') }}">Agregar Vehiculos</a></li>
                         <li><a class="dropdown-item" href="{{ route('employee_vehicles.create') }}">Asignar Vehiculo por Empleado</a></li>
-                        <li><a class="dropdown-item" href="{{ route('vehicle_areas.create') }}">Asignar Vehiculos a un Area</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
