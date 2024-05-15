@@ -13,6 +13,7 @@ use App\Http\Controllers\Employee_vehicleController;
 use App\Http\Controllers\Vehicle_areaController;
 use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\HistoriesController;
 
 use App\Mail\CorreosMailable;
 
@@ -111,3 +112,10 @@ Route::resource('/users',UserController::class);
 use App\Http\Controllers\CorreosController;
 
 Route::get('correos', [CorreosController::class, 'getMail'])->name('correos');
+
+Route::resource('/histories',HistoriesController::class);
+Route::get('/histories/show/{id}',[HistoriesController::class, 'show']);
+Route::post('/histories/create',[HistoriesController::class, 'create']);
+
+Route::get('/getVechileDetails/{plate}',[HistoriesController::class, 'getVechileDetails']);
+
