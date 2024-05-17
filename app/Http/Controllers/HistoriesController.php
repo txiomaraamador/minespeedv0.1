@@ -13,8 +13,9 @@ class HistoriesController extends Controller
 {
     public function index(Request $request)
     {
+        $histories = Histories::with('employee_vehicle.nameemployee', 'employee_vehicle.namevehicle', 'nameequipment.namearea')->get();
 
-        
+        return view('HistoriesIndex', compact('histories'));
     }
     public function create()
     {
@@ -116,6 +117,12 @@ class HistoriesController extends Controller
             // Si no se encuentra el empleado, devuelve una respuesta de error
             return response()->json(['error' => 'Vehiculo no encontrado'], 404);
         }
+    }
+    public function destroy($id)
+    {
+        $histories = Histories::find($id);
+
+             
     }
 }
 
