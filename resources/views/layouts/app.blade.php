@@ -33,6 +33,9 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('histories.index') }}">Historial</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('equipments.index') }}">Ver Equipos</a>
                     </li>
                     <li class="nav-item">
@@ -94,6 +97,7 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <h5><a class="nav-link active" aria-current="page" href="/home">Pagina principal</a></h5>
+                <li><a class="dropdown-item" href="{{ route('histories.index') }}">Historial</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Equipos

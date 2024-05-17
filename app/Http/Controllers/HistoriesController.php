@@ -7,7 +7,11 @@ use App\Models\Histories;
 use App\Models\Equipments;
 use App\Models\Employee_vehicle;
 use App\Models\Vehicles;
+use App\Models\Typevehicles;
 use App\Models\Employees;
+use App\Models\Positions;
+use App\Models\Typeequipments;
+use App\Models\Areas;
 
 class HistoriesController extends Controller
 {
@@ -80,8 +84,21 @@ class HistoriesController extends Controller
     public function show($id)
     {
         $histories = Histories::find($id);
+        
+        $employeeVehicle = Employee_vehicle::where('id', $histories->employee_vehicle_id)->firstOrFail();
+        
+        $vehicle = Vehicles::where('id', $employeeVehicle->vehicles_id)->first();
+        $typevehicle = Typevehicles::where('id', $vehicle->typevehicles_id)->first();
+        
+        $employee = Employees::where('id', $employeeVehicle->employees_id)->first();
+        $position = Positions::where('id', $employee->positions_id)->first();
 
-             
+        $equipment = Equipments::where('id', $histories->equipments_id)->firstOrFail();
+        $typeequipment = Typeequipments::where('id', $equipment->typeequipments_id)->first();
+        $area = Areas::where('id', $equipment->areas_id)->first();
+        
+        return view('HistoriesShow', compact('histories', 'vehicle', 'typevehicle','employee','position','equipment','typeequipment','area'));
+
     }
     public function getVechileDetails($plate)
     {
