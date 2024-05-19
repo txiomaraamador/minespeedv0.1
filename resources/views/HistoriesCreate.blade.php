@@ -12,7 +12,7 @@
             <hr style="border-top: 2px solid #ee194f;">
             <form method="POST" action="{{ route('histories.store') }}">
                 @csrf
-                    
+                <input type="hidden" name="reports_id" value="{{ $id }}">
                 <div class="row">
                     <div class="col-md-4">
                         <label for="date" class="form-label">Fecha</label>

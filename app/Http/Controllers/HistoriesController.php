@@ -47,7 +47,7 @@ class HistoriesController extends Controller
         $employeeVehicles = Employee_vehicle::all();
         $equipments = Equipments::all();
 
-        return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 'equipments', 'reports', 'output'));
+        return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 'equipments', 'reports', 'output','id'));
 }
 
     public function store(Request $request)
@@ -87,6 +87,7 @@ class HistoriesController extends Controller
             $historie->photo = $request->input('photo');
             $historie->employee_vehicle_id = $employeeVehicleId; 
             $historie->equipments_id = $equipmentId;
+            $historie->reports_id = $request->input('reports_id');
 //dd($historie);
             
             $historie->save();
