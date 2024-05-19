@@ -12,6 +12,7 @@ use App\Models\Employees;
 use App\Models\Positions;
 use App\Models\Typeequipments;
 use App\Models\Areas;
+use App\Models\Reports;
 
 class HistoriesController extends Controller
 {
@@ -21,15 +22,33 @@ class HistoriesController extends Controller
 
         return view('HistoriesIndex', compact('histories'));
     }
-    public function create()
+    public function create($id)
     {
-        
+        // Ruta del script Python
+        $scriptPath = base_path('public/decode_image.py');
+    
+        // Comando a ejecutar
+        $command = 'python ' . escapeshellarg($scriptPath) . ' ' . escapeshellarg($id);
+    
+        // Ejecutar el comando y capturar la salida y cualquier error
+        $output = shell_exec($command . ' 2>&1'); // Capture both output and errors
+
+        // Verificar si la ejecución fue exitosa
+        if ($output === null) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error ejecutando el script Python',
+                'command' => $command
+            ], 500);
+        }
+
+        $reports = Reports::all();
         $vehicles = Vehicles::all();
         $employeeVehicles = Employee_vehicle::all();
         $equipments = Equipments::all();
 
-        return view('HistoriesCreate', compact('vehicles','employeeVehicles','equipments'));
-    }
+        return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 'equipments', 'reports', 'output'));
+}
 
     public function store(Request $request)
     {
@@ -43,6 +62,7 @@ class HistoriesController extends Controller
                 'number' => 'required',
             ]);///dd($request->all());
     
+        
                    // Busca el vehículo por la placa ingresada por el usuario
                     $vehicle = Vehicles::where('plate', $request->input('plate'))->firstOrFail();
                     //dd($vehicle);
