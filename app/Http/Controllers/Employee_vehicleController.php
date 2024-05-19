@@ -24,27 +24,37 @@ class Employee_vehicleController extends Controller
     }
 
     public function store(Request $request)
-    {
-        try {
-            $messages = [
-                
-            ];
-            $this->validate($request, [
-                
-            ], $messages);
-            // Crear un nuevo paciente
-            $employee_vehicle = new Employee_vehicle();
-            $employee_vehicle->employees_id = $request->input('employees_id');
-            $employee_vehicle->vehicles_id = $request->input('vehicles_id');
+{
+    try {
+        $messages = [
+            
+        ];
+        $this->validate($request, [
+            
+        ], $messages);
 
-            $employee_vehicle->save();
-    
-            return redirect("/employee_vehicles")->with('success', 'Aginacion creado con éxito');
-        } catch (\Illuminate\Database\QueryException $e) {
-            // Manejar el error de llave foránea
-            return redirect("/employee_vehicles/create")->with('error', 'No se puede agregar la asignacion.');
+        // Verificar si el vehículo ya está asignado a algún empleado
+        $vehicle_id = $request->input('vehicles_id');
+        $existing_assignment = Employee_vehicle::where('vehicles_id', $vehicle_id)->first();
+
+        if ($existing_assignment) {
+            // Si el vehículo ya está asignado a un empleado, devuelve un mensaje de error
+            return redirect("/employee_vehicles/create")->with('error', 'El vehículo ya está asignado a otro empleado.');
         }
+
+        // Si el vehículo no está asignado, crea una nueva asignación
+        $employee_vehicle = new Employee_vehicle();
+        $employee_vehicle->employees_id = $request->input('employees_id');
+        $employee_vehicle->vehicles_id = $vehicle_id;
+
+        $employee_vehicle->save();
+
+        return redirect("/employee_vehicles")->with('success', 'Asignación creada con éxito');
+    } catch (\Illuminate\Database\QueryException $e) {
+        // Manejar otros errores de base de datos, si es necesario
+        return redirect("/employee_vehicles/create")->with('error', 'No se puede agregar la asignación.');
     }
+}
 
    /* public function show($id)
     {
