@@ -61,7 +61,7 @@
             <div>
                 <h5 class="card-title">Area de Vehiculos</h5>
                 <p class="card-text">Ver el area de vehiculos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de areas</small></p>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
             <div>
                 <h5 class="card-title">Vehiculos</h5>
                 <p class="card-text">Ver los vehiculos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de vehiculos</small></p>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@
             <div>
                 <h5 class="card-title">Empleados</h5>
                 <p class="card-text">Ver los empleados activos.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de empleados</small></p>
             </div>
         </div>
     </div>
