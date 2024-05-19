@@ -7,6 +7,22 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">Editar Tipo de Equipo</h2>
+            @endif
+
+            @if(session('success'))
+                <div id="alert" class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <script>
+                // Código JavaScript para ocultar la alerta después de unos segundos
+                setTimeout(function(){
+                    var alert = document.getElementById('alert');
+                    if(alert) {
+                        alert.style.display = 'none';
+                    }
+                }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
+            </script>
             <hr style="border-top: 2px solid #ee194f;">
 
             <form method="POST" action="{{ route('typeequipments.update', $typeequipment->id) }}">
