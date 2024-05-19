@@ -115,7 +115,7 @@ Route::get('correos', [CorreosController::class, 'getMail'])->name('correos');
 
 Route::resource('/histories',HistoriesController::class);
 Route::get('/histories/show/{id}',[HistoriesController::class, 'show']);
-Route::post('/histories/create',[HistoriesController::class, 'create']);
+Route::get('/histories/create/{id}',[HistoriesController::class, 'create'])->name('histories.create');
 Route::delete('/histories/delete/{id}',[EmailsController::class, 'destroy'])->name('histories.destroy');
 
 Route::get('/getVechileDetails/{plate}',[HistoriesController::class, 'getVechileDetails']);

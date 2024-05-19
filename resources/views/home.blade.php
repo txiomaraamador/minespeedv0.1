@@ -13,24 +13,20 @@
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Empleado</th>
-                    <th scope="col">No. de vehiculo</th>
-                    <th scope="col">Velocidad</th>
-                    <th scope="col">Area</th>
+                    <th scope="col">Velicidad</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+                @foreach ($reports as $report)
                 <tr>
                     <th scope="row"><i class="bi bi-exclamation-triangle icon-al"></i></th>
-                    <td>Carlos Eduardo Lopez Avila</td>
-                    <td>07</td>
-                    <td>200km/h</td>
-                    <td>Zona de descarga</td>
+                    <td>{{ $report->speed }}</td>
                     <td>
-                        <button type="submit" class="btn btn-sm btn-primary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</button>
+                        <a href="{{ route('histories.create', $report->id) }}" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</a>
                     </td>
                 </tr>
+                @endforeach
                
             </tbody>
         </table>

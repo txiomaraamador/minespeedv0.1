@@ -12,7 +12,7 @@
             <hr style="border-top: 2px solid #ee194f;">
             <form method="POST" action="{{ route('histories.store') }}">
                 @csrf
-                
+                    
                 <div class="row">
                     <div class="col-md-4">
                         <label for="date" class="form-label">Fecha</label>
@@ -44,7 +44,8 @@
                     <div class="col-md-4">
                         <label for="photo" class="form-label">Fotografia del vehiculo</label>
                         <div class="mb-3 input-group">
-                           
+                            
+                           {{$output}}
                             <input type="text" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" id="photo" name="photo" readonly>
                             
                         </div>
