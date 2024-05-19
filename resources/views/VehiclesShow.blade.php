@@ -3,68 +3,51 @@
 @section('title', 'Vehicle Show')
 
 @section('content')
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-4 mb-4">Informacion completa del Vehiculo No: {{ $vehicle->serial_number }}</h1>
-            </div>
-            
+<br>
+<div class="container">
+    <!-- Información del Vehículo -->
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: #ee194f; color: white;"> <!-- Cambiado a rosa -->
+            Información de Vehículo número: {{ $vehicle->serial_number }}, con placa: {{ $vehicle->plate }}
         </div>
-        <div class="card-group">
-            
-            <div class="card">
-                <div class="card-body ">
-                    <h5 class="card-title">Informacion de Vehiculo </h5>
-                    
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="card-text">Marca: {{ $vehicle->make }}</p>
-                                <p class="card-text">Modelo: {{ $vehicle->model }}</p>
-                                <p class="card-text">Manufactura: {{ $vehicle->manufacture }}</p>
-                                <p class="card-text">Placa: {{ $vehicle->plate }}</p>
-                                <p class="card-text">Carga: {{ $vehicle->tonnage }}</p>
-                                <p class="card-text">Tipo de vehiculo: {{ $vehicle->nametypevehicle->name}}</p>
-                            </div>
-                        </div>
-                     
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                        <h5 class="card-title">Informacion del conductor de vehiculo</h5>
-                        @foreach($employees as $employee)
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="card-text">No de Identificacion: {{ $employee->identification_number }}</p>
-                                <p class="card-text">Nombre: {{ $employee->name }} {{ $employee->lastname }}</p>
-                                <p class="card-text">Correo: {{ $employee->email }}</p>
-                                <p class="card-text">No. de Licencia: {{ $employee->license }}</p>
-                                <p class="card-text">Cargo: {{ $employee->nameposition->name}}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                </div>
-            </div>
-            <div class="card">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Informacion del Area donde se encuentra</h5>
-                        @foreach($areas as $area)
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="card-text">Nombre: {{ $area->name }}</p>
-                                <p class="card-text">Informacion Topográfica: {{ $area->topographic_information }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-            </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Marca: {{ $vehicle->make }}, Modelo: {{ $vehicle->model }}, Manufactura: {{ $vehicle->manufacture }}</li>
+                <li class="list-group-item">Tipo de vehículo: {{ $vehicle->nametypevehicle->name}}, Carga: {{ $vehicle->tonnage }}</li>
+            </ul>
         </div>
-
-       
     </div>
-
-
-    
+    <!-- Información del Conductor -->
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: #ee194f; color: white;">
+            Información del Conductor del Vehículo
+        </div>
+        <div class="card-body">
+            @foreach($employees as $employee)
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item">No de Identificación: {{ $employee->identification_number }}</li>
+                    <li class="list-group-item">Nombre: {{ $employee->name }} {{ $employee->lastname }}</li>
+                    <li class="list-group-item">Correo: {{ $employee->email }}</li>
+                    <li class="list-group-item">No. de Licencia: {{ $employee->license }}</li>
+                    <li class="list-group-item">Cargo: {{ $employee->nameposition->name }}</li>
+                </ul>
+            @endforeach
+        </div>
+    </div>
+    <!-- Información del Área -->
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: #ee194f; color: white;">
+            Información del Área Donde se Encuentra
+        </div>
+        <div class="card-body">
+            @foreach($areas as $area)
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item">Nombre: {{ $area->name }}</li>
+                    <li class="list-group-item">Información Topográfica: {{ $area->topographic_information }}</li>
+                </ul>
+            @endforeach
+        </div>
+    </div>
+</div>
+<br>
 @endsection
