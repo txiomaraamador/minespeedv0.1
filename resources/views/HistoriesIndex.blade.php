@@ -10,7 +10,11 @@
             <h1 class="display-4 mb-4">Historial de Alertas</h1>
         </div>
     </nav>
-    @endif
+    @if(session('error'))
+    <div id="alert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
     @if(session('success'))
         <div id="alert" class="alert alert-success">

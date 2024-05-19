@@ -20,7 +20,11 @@
             </div>
         </div>
     </nav>
-    @endif
+    @if(session('error'))
+    <div id="alert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
     @if(session('success'))
         <div id="alert" class="alert alert-success">

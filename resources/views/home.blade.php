@@ -8,7 +8,11 @@
         
     </div>
     <h5 class="card-title mx-auto">ALETRAS PARA ATENCION</h5>
-    @endif
+    @if(session('error'))
+    <div id="alert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
     @if(session('success'))
         <div id="alert" class="alert alert-success">

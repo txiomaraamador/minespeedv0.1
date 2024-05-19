@@ -7,7 +7,11 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">Editar Cargo</h2>
-            @endif
+            @if(session('error'))
+            <div id="alert" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+@endif
 
             @if(session('success'))
                 <div id="alert" class="alert alert-success">

@@ -9,6 +9,12 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">Editar Área</h2>
+            @if(session('error'))
+            <div id="alert" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+
+
             @endif
 
             @if(session('success'))
