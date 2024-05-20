@@ -54,7 +54,7 @@
                         <label for="speed" class="form-label">Velocidad</label>
                         <div class="mb-3 input-group">
                             
-                            <input type="text" class="form-control{{ $errors->has('speed') ? ' is-invalid' : '' }}" id="speed" name="speed" value="700 km/h" readonly>
+                            <input type="text" class="form-control{{ $errors->has('speed') ? ' is-invalid' : '' }}" id="speed" name="speed" value="{{ $speed }} km/h" readonly>
                             
                         </div>
                     </div>
@@ -71,12 +71,18 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <label for="equipments_id" class="form-label">IP camara</label>
+                        <div class="mb-3 input-group">
+                            <input type="text" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}"  value="{{ $camera_ip }}" id="number" name="number" required>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
                         <label for="plate" class="form-label">Ingrese la placa</label>
                         <div class="mb-3 input-group">
                             <input type="text" class="form-control{{ $errors->has('plate') ? ' is-invalid' : '' }}"  id="plate" name="plate" required>
                         </div>
                     </div>
-
 
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -133,16 +139,12 @@
                             <label for="positions_id" class="form-label">Cargo:</label>
                             <input type="text"  class="form-control" id="positions_id" name="positions_id" readonly >
                         </div>
-
-
-
-                    <div class="col-md-4">
-                        <label for="equipments_id" class="form-label">IP camara</label>
-                        <div class="mb-3 input-group">
-                            <input type="text" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}"  id="number" name="number" required>
+                        <div class="col-md-4">
+                            <label for="positions_id" class="form-label">Zona:</label>
+                            <input type="text"  class="form-control" name="zona" value="{{ $zona }}" readonly >
                         </div>
                     </div>
-                </div>
+
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="{{ route('histories.index') }}" class="btn btn-secondary">Cancelar</a>
                     <button type="submit" class="btn btn-primary" style="background-color: #ee194f; border-color: #ee194f; color: #fff;">Guardar</button>

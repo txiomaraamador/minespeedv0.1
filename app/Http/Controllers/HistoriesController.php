@@ -42,12 +42,20 @@ class HistoriesController extends Controller
             ], 500);
         }
 
-        $reports = Reports::all();
+        $reports = Reports::find($id);
+        $speed = $reports->speed;
+        $camera_ip = $reports->camera_ip;
         $vehicles = Vehicles::all();
         $employeeVehicles = Employee_vehicle::all();
-        $equipments = Equipments::all();
+        $equipments = Equipments::where('number',$camera_ip)->firstOrFail();
+      
+        $area = Areas::where('id', $equipments->areas_id)->firstOrFail();
+      //  dd($area);
+        $zona = $area->name;
+        
 
-        return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 'equipments', 'reports', 'output','id'));
+        return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 
+            'equipments', 'reports', 'output','id','speed','camera_ip','zona'));
 }
 
     public function store(Request $request)
