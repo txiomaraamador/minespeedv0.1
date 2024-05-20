@@ -38,13 +38,13 @@ class VehiclesController extends Controller
             ];
     
             $request->validate([
-                'serial_number' => 'required|numeric|max:255',
+                'serial_number' => 'required|numeric',
                 'make' => 'required|string|max:255',
                 'model' => 'required|string|max:255',
                 'manufacture' => 'required|string|max:255',
                 'plate' => 'required|string|max:255',
                 'tonnage' => 'required|string|max:255',
-                'typevehicles_id' => 'required|exists:type_vehicles,id',
+                'typevehicles_id' => 'required|exists:typevehicles,id',
             ], $mensajes);
             // Crear un nuevo paciente
             $vehicle = new Vehicles();

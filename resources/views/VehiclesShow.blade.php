@@ -35,19 +35,7 @@
         </div>
     </div>
     <!-- Información del Área -->
-    <div class="card mb-4">
-        <div class="card-header" style="background-color: #ee194f; color: white;">
-            Información del Área Donde se Encuentra
-        </div>
-        <div class="card-body">
-            @foreach($areas as $area)
-                <ul class="list-group list-group-flush mb-4">
-                    <li class="list-group-item">Nombre: {{ $area->name }}</li>
-                    <li class="list-group-item">Información Topográfica: {{ $area->topographic_information }}</li>
-                </ul>
-            @endforeach
-        </div>
-    </div>
+    
 </div>
 <br>
 @endsection
