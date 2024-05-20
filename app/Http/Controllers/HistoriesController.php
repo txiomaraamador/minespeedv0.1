@@ -166,8 +166,21 @@ class HistoriesController extends Controller
     }
     public function destroy($id)
     {
-        $histories = Histories::find($id);
+        $historie = Histories::find($id);
 
+        if ($historie) {
+            $historie->refresh();
+           
+            try {
+                $historie->delete();
+                return redirect("/histories")->with('success', 'El registro ha sido eliminado con éxito');
+            } catch (\Illuminate\Database\QueryException $e) {
+                // Manejar la excepción de la base de datos (error de llave foránea)
+                return redirect("/histories")->with('error', 'No se puede eliminar el registro, está siendo utilizado en otra parte del sistema.');
+            }
+        } else {
+            return redirect("/histories")->with('error', 'Registro no encontrado');
+        }
              
     }
 }

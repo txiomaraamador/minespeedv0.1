@@ -66,7 +66,7 @@
                             <form action="{{ route('histories.destroy', $history->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este Vehiculo?')">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este registro?')">Eliminar</button>
                             </form>
                         </div>
                     </td>
