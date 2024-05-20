@@ -53,63 +53,67 @@ class HistoriesController extends Controller
       //  dd($area);
         $zona = $area->name;
         
-
         return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 
             'equipments', 'reports', 'output','id','speed','camera_ip','zona'));
 }
 
-    public function store(Request $request)
-    {
-        try {
-            $request->validate([
-                'date' => 'required',
-                'message' => 'required|max:150',
-                'speed' => 'required',
-                'photo' => 'nullable',
-                'plate' => 'required', 
-                'number' => 'required',
-            ]);///dd($request->all());
-    
-        
-                   // Busca el vehículo por la placa ingresada por el usuario
-                    $vehicle = Vehicles::where('plate', $request->input('plate'))->firstOrFail();
-                    //dd($vehicle);
-                    // Busca el registro en la tabla employee_vehicles utilizando el ID del vehículo
-                    $employeeVehicle = Employee_vehicle::where('vehicles_id', $vehicle->id)->firstOrFail();
-                    //dd($employeeVehicle);
-                    // Obtiene el ID del registro de employee_vehicles
-                    $employeeVehicleId = $employeeVehicle->id;
-                    //dd($employeeVehicleId);
-                    // Busca el vehículo por la placa ingresada por el usuario
-                    $equipment = Equipments::where('number', $request->input('number'))->firstOrFail();
-                    
-                    // Obtiene el ID del registro de employee_vehicles
-                    $employeeVehicleId = $employeeVehicle->id;
+public function store(Request $request)
+{
+    try {
+        $request->validate([
+            'date' => 'required',
+            'message' => 'required|max:150',
+            'speed' => 'required',
+            'photo' => 'nullable',
+            'plate' => 'required', 
+            'number' => 'required',
+        ]);///dd($request->all());
 
-                    $equipmentId = $equipment->id;
-            // Crear un nuevo historial
-            $historie = new Histories();
-            $historie->date = $request->input('date');
-            $historie->message = $request->input('message');
-            $historie->speed = $request->input('speed');
-            $historie->photo = $request->input('photo');
-            $historie->employee_vehicle_id = $employeeVehicleId; 
-            $historie->equipments_id = $equipmentId;
-            $historie->reports_id = $request->input('reports_id');
-//dd($historie);
-            
-            $historie->save();
-    
-            return redirect("/histories")->with('success', 'Registrado en el historial');
-        } catch (\Illuminate\Database\QueryException $e) {
-            return redirect("/histories/create")->with('error', 'No se pudo hacer el registro.');
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect("/histories/create")->with('error', 'La placa del vehículo o el número del equipo no fueron encontrados.');
-        } catch (\Exception $e) {
-            return redirect("/histories/create")->with('error', 'Ocurrió un error al procesar la solicitud.');
+        // Busca el vehículo por la placa ingresada por el usuario
+        $vehicle = Vehicles::where('plate', $request->input('plate'))->firstOrFail();
+        // Busca el registro en la tabla employee_vehicles utilizando el ID del vehículo
+        $employeeVehicle = Employee_vehicle::where('vehicles_id', $vehicle->id)->firstOrFail();
+        // Obtiene el ID del registro de employee_vehicles
+        $employeeVehicleId = $employeeVehicle->id;
+        // Busca el equipo por el número ingresado por el usuario
+        $equipment = Equipments::where('number', $request->input('number'))->firstOrFail();
+        // Obtiene el ID del equipo
+        $equipmentId = $equipment->id;
+
+        // Crear un nuevo historial
+        $historie = new Histories();
+        $historie->date = $request->input('date');
+        $historie->message = $request->input('message');
+        $historie->speed = $request->input('speed');
+        $historie->photo = $request->input('photo');
+        $historie->employee_vehicle_id = $employeeVehicleId; 
+        $historie->equipments_id = $equipmentId;
+        $historie->reports_id = $request->input('reports_id');
+
+        // Guarda el historial
+        $historie->save();
+
+        // Actualiza el campo status en la tabla de reports
+        $report = Reports::find($historie->reports_id);
+        if ($report) {
+            $report->status = 0;
+            $report->save();
         }
+
+        return redirect("/histories")->with('success', 'Registrado en el historial y estado del reporte actualizado.');
+    } catch (\Illuminate\Database\QueryException $e) {
+        return redirect("/histories/create")->with('error', 'No se pudo hacer el registro.');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect("/histories/create")->with('error', 'La placa del vehículo o el número del equipo no fueron encontrados.');
+    } catch (\Exception $e) {
+        return redirect("/histories/create")->with('error', 'Ocurrió un error al procesar la solicitud.');
     }
-         
+}
+
+
+
+
+
     public function show($id)
     {
         $histories = Histories::find($id);

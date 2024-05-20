@@ -73,7 +73,7 @@
                     <div class="col-md-4">
                         <label for="equipments_id" class="form-label">IP camara</label>
                         <div class="mb-3 input-group">
-                            <input type="text" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}"  value="{{ $camera_ip }}" id="number" name="number" required>
+                            <input type="text" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}"  value="{{ $camera_ip }}" id="number" name="number" readonly>
                         </div>
                         
                     </div>
