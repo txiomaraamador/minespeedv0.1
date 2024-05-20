@@ -24,6 +24,7 @@ class HistoriesController extends Controller
     }
     public function create($id)
     {
+        try {
         // Ruta del script Python
         $scriptPath = base_path('public/decode_image.py');
     
@@ -48,13 +49,24 @@ class HistoriesController extends Controller
         $vehicles = Vehicles::all();
         $employeeVehicles = Employee_vehicle::all();
         $equipments = Equipments::where('number',$camera_ip)->firstOrFail();
+       
       
         $area = Areas::where('id', $equipments->areas_id)->firstOrFail();
-      //  dd($area);
+        
+        //dd($area);
         $zona = $area->name;
         
         return view('HistoriesCreate', compact('vehicles', 'employeeVehicles', 
             'equipments', 'reports', 'output','id','speed','camera_ip','zona'));
+
+            return redirect("/home")->with('success', 'Registrado en el historial y estado del reporte actualizado.');
+    } catch (\Illuminate\Database\QueryException $e) {
+        return redirect("/home")->with('error', 'No se pudo hacer el registro.');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return redirect("/home")->with('error', 'La IP '.$camera_ip.' no ha sido registada en el sistema.');
+    } catch (\Exception $e) {
+        return redirect("/home")->with('error', 'Ocurrió un error al procesar la solicitud.');
+    }
 }
 
 public function store(Request $request)
