@@ -33,7 +33,9 @@
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Velicidad</th>
+                    <th scope="col">Tiempo de suseso: </th>
+                    <th scope="col">Velicidad: </th>
+                    <th scope="col">Camara de registro: </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -41,9 +43,11 @@
                 @foreach ($reports as $report)
                 <tr>
                     <th scope="row"><i class="bi bi-exclamation-triangle icon-al"></i></th>
-                    <td>{{ $report->speed }}</td>
+                    <td>{{ $report->exittime }}</td>
+                    <td>{{ $report->speed }} km/h</td>
+                    <td>{{ $report->camera_ip }}</td>
                     <td>
-                        <a href="{{ route('histories.create', $report->id) }}" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</a>
+                        <a href="{{ route('histories.create', $report->id) }}" class="btn btn-sm btn-secondary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</a>
                     </td>
                 </tr>
                 @endforeach

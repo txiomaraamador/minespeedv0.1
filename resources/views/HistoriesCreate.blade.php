@@ -64,7 +64,7 @@
                     <div class="col-md-4">
                         <label for="photo" class="form-label">Fotografia del vehiculo</label>
                         <div class="mb-3 input-group">
-                            <img src="/{{$output}}" >                     
+                            <img src="/{{$output}}" width="345" >                     
                         </div>
                     </div>
                     <div class="col-md-4">
