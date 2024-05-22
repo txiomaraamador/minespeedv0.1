@@ -64,10 +64,7 @@
                     <div class="col-md-4">
                         <label for="photo" class="form-label">Fotografia del vehiculo</label>
                         <div class="mb-3 input-group">
-                            
-                           {{$output}}
-                            <input type="text" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" id="photo" name="photo" readonly>
-                            
+                            <img src="/{{$output}}" >                     
                         </div>
                     </div>
                     <div class="col-md-4">
