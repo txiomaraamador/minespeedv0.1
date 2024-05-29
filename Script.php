@@ -1,4 +1,3 @@
-
 <?php
 
 $dbconn = pg_connect("host=127.0.0.1 dbname=minespeedv01 user=postgres password=root");
@@ -12,6 +11,6 @@ while (true) {
         file_get_contents('http://127.0.0.1:8000/correos');
     }
     // Esperar un segundo antes de verificar nuevas notificaciones
-    sleep(10);
+
 }
 ?>

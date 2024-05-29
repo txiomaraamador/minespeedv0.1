@@ -6,14 +6,17 @@ import string
 import sys
 
 # Detalles de conexión a la base de datos
-DB_NAME = 'minespeedv01'
+DB_NAME = 'vigia'
 DB_USER = 'postgres'
-DB_PASSWORD = 'root'
-DB_HOST = '127.0.0.1'
-DB_PORT = '5432'  # Cambia el puerto si es diferente
+DB_PASSWORD = 'admin'
+DB_HOST = 'localhost'
+DB_PORT = '8000'  # Cambia el puerto si es diferente
 
 # Detalles de la tabla
-TABLE_NAME = 'reports'
+TABLE_NAME = 'data'
+
+# Directorio donde se guardarán las imágenes
+IMAGE_DIR = 'images'
 
 def recuperar_imagen_desde_db(id):
     try:
@@ -53,16 +56,21 @@ def guardar_imagen_base64(base64_string):
         # Generar un nombre de archivo aleatorio de 10 caracteres
         nombre_archivo = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) + ".jpeg"
         
-        # Guardar la imagen decodificada en un archivo JPEG
-        with open(nombre_archivo, 'wb') as f:
+        # Comprobar si el directorio images existe, si no, crearlo
+        if not os.path.exists(IMAGE_DIR):
+            os.makedirs(IMAGE_DIR)
+        
+        # Guardar la imagen decodificada en un archivo JPEG dentro de la carpeta images
+        ruta_archivo = os.path.join(IMAGE_DIR, nombre_archivo)
+        with open(ruta_archivo, 'wb') as f:
             f.write(decoded_image)
         
-        return nombre_archivo
+        return ruta_archivo
     except Exception as e:
         print("Error al guardar la imagen:", e)
         return None
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     # Input del ID de la fila de la base de datos
     id_db = sys.argv[1] if len(sys.argv) > 1 else ''
 
@@ -70,11 +78,11 @@ if __name__ == "__main__":
     base64_image = recuperar_imagen_desde_db(id_db)
 
     if base64_image:
-        # Guardar la imagen y obtener el nombre del archivo
-        nombre_archivo = guardar_imagen_base64(base64_image)
+        # Guardar la imagen y obtener la ruta del archivo
+        ruta_archivo = guardar_imagen_base64(base64_image)
 
-        if nombre_archivo:
-            print(nombre_archivo)
+        if ruta_archivo:
+            print(ruta_archivo)
         else:
             print(None)
     else:
