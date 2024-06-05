@@ -4,10 +4,10 @@
 <br>
 <div class="card bg-light text-center w-100 mb-10">
     <div class="card-body">
-        <h1 class="card-title mx-auto">VELOCIMETRO</h1>
+        <h1 class="card-title mx-auto">VELOCÍMETRO</h1>
         
     </div>
-    <h5 class="card-title mx-auto">ALETRAS PARA ATENCION</h5>
+    <h5 class="card-title mx-auto">ALERTAS PARA ATENCIÓN</h5>
     @if(session('error'))
     <div id="alert" class="alert alert-danger">
         {{ session('error') }}
@@ -33,9 +33,9 @@
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Tiempo de suseso: </th>
+                    <th scope="col">Tiempo de suceso: </th>
                     <th scope="col">Velicidad: </th>
-                    <th scope="col">Camara de registro: </th>
+                    <th scope="col">Lugar de registro: </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -63,9 +63,9 @@
         <div class="card-body ">
             <i class="bi bi-pin-map icon-lg bg-light"></i>
             <div>
-                <h5 class="card-title">Area de Vehiculos</h5>
-                <p class="card-text">Ver el area de vehiculos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de areas</small></p>
+                <h5 class="card-title">Área de Vehiculos</h5>
+                <p class="card-text">Ver el área de vehiculos disponibles.</p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de áreas</small></p>
             </div>
         </div>
     </div>

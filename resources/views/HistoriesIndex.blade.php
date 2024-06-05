@@ -40,7 +40,7 @@
                     <th>Velocidad</th>
                     <th>Empleado</th>
                     <th>Vehiculo</th>
-                    <th>Area</th>
+                    <th>Área</th>
                     <th></th>
                     @if(Auth::user()->role !== 'visualizer')
                     <th></th>
@@ -57,7 +57,7 @@
                     <td>{{ $history->employee_vehicle->namevehicle->serial_number }}</td>
                     <td>{{ $history->nameequipment->namearea->name }}</td>
                     <td>
-                        <a href="{{ route('histories.show', $history->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                        <a href="{{ route('histories.show', $history->id) }}" style="color: #ee194f;">Mostrar más información</a>
                     </td>
                     @if(Auth::user()->role !== 'visualizer')
                     <td>
