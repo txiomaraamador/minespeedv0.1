@@ -11,7 +11,7 @@
             Alerta registrada en {{ $area->name }} por cámara: {{ $equipment->number }} con fecha {{ $histories->date}}
         </div>
         <div class="card-body">
-            <img src="/{{$output}}" width="600" >     
+           
         </div>
     </div>
     <div class="card mb-4">

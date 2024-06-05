@@ -34,7 +34,7 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Tiempo de suceso: </th>
-                    <th scope="col">Velicidad: </th>
+                    <th scope="col">Velocidad: </th>
                     <th scope="col">Lugar de registro: </th>
                     <th scope="col"></th>
                 </tr>
