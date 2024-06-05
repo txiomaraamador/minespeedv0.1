@@ -45,7 +45,11 @@
                     <th scope="row"><i class="bi bi-exclamation-triangle icon-al"></i></th>
                     <td>{{ $report->exittime }}</td>
                     <td>{{ $report->speed }} km/h</td>
-                    <td>{{ $report->camera_ip }}</td>
+                    <td>
+                        @php
+                        $equipment = $equipments->firstWhere('number', $report->camera_ip);
+                        @endphp
+                        {{ $equipment ? $areas[$equipment->areas_id] : 'N/A' }}</td>
                     <td>
                         <a href="{{ route('histories.create', $report->id) }}" class="btn btn-sm btn-secondary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</a>
                     </td>
