@@ -51,7 +51,7 @@
                         @endphp
                         {{ $equipment ? $areas[$equipment->areas_id] : 'N/A' }}</td>
                     <td>
-                        <a href="{{ route('histories.create', $report->id) }}" class="btn btn-sm btn-secondary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Ver detalles</a>
+                        <a href="{{ route('histories.create', $report->id) }}" class="btn btn-sm btn-secondary" style="background-color: #ee194f;; border-color: #ee194f;; color: #fff;">Registar</a>
                     </td>
                 </tr>
                 @endforeach
