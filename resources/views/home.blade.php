@@ -63,37 +63,44 @@
 
 
 <div class="card-group">
+    <a href="/areas" class="card-link">
     <div class="card">
         <div class="card-body ">
             <i class="bi bi-pin-map icon-lg bg-light"></i>
             <div>
                 <h5 class="card-title">Área de Vehículos</h5>
-                <p class="card-text">Ver el área de Vehículos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de áreas</small></p>
+                <p class="card-text">Ver el áreas disponibles.</p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a lista de áreas</small></p>
             </div>
         </div>
     </div>
+    </a>
+    <a href="/vehicles" class="card-link">
     <div class="card">
         <div class="card-body">
             <i class="bi bi-truck icon-lg bg-light"></i>
             <div>
                 <h5 class="card-title">Vehículos</h5>
                 <p class="card-text">Ver los Vehículos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de Vehículos</small></p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a lista de Vehículos</small></p>
             </div>
         </div>
     </div>
+</a>
+<a href="/employees" class="card-link">
     <div class="card">
         <div class="card-body">
             <i class="bi bi-people icon-lg bg-light"></i>
             <div>
                 <h5 class="card-title">Empleados</h5>
                 <p class="card-text">Ver los empleados activos.</p>
-                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de empleados</small></p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a lista de empleados</small></p>
             </div>
         </div>
     </div>
+</a>
 </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
@@ -127,6 +134,16 @@
     .card-title {
         margin-bottom: 0.5rem; /* Espacio inferior de la etiqueta de título */
     }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+.card-link .card {
+    cursor: pointer;
+}
+</style>
 
 </style>
 
