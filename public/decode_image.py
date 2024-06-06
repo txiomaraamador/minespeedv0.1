@@ -6,14 +6,14 @@ import string
 import sys
 
 # Detalles de conexión a la base de datos
-DB_NAME = 'vigia'
+DB_NAME = 'minespeedv01'
 DB_USER = 'postgres'
-DB_PASSWORD = 'admin'
-DB_HOST = 'localhost'
-DB_PORT = '8000'  # Cambia el puerto si es diferente
+DB_PASSWORD = 'root'
+DB_HOST = '127.0.0.1'
+DB_PORT = '5432'  # Cambia el puerto si es diferente
 
 # Detalles de la tabla
-TABLE_NAME = 'data'
+TABLE_NAME = 'reports'
 
 # Directorio donde se guardarán las imágenes
 IMAGE_DIR = 'images'
@@ -70,7 +70,7 @@ def guardar_imagen_base64(base64_string):
         print("Error al guardar la imagen:", e)
         return None
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     # Input del ID de la fila de la base de datos
     id_db = sys.argv[1] if len(sys.argv) > 1 else ''
 

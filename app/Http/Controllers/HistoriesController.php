@@ -30,7 +30,7 @@ class HistoriesController extends Controller
     
         // Comando a ejecutar
         $command = 'python ' . escapeshellarg($scriptPath) . ' ' . escapeshellarg($id);
-    
+    //dd($command);
         // Ejecutar el comando y capturar la salida y cualquier error
         $output = shell_exec($command . ' 2>&1'); // Capture both output and errors
 
@@ -129,6 +129,7 @@ public function store(Request $request)
     public function show($id)
     {
         $histories = Histories::find($id);
+        //dd($histories);
         
         $employeeVehicle = Employee_vehicle::where('id', $histories->employee_vehicle_id)->firstOrFail();
         

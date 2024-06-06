@@ -67,8 +67,8 @@
         <div class="card-body ">
             <i class="bi bi-pin-map icon-lg bg-light"></i>
             <div>
-                <h5 class="card-title">Área de Vehiculos</h5>
-                <p class="card-text">Ver el área de vehiculos disponibles.</p>
+                <h5 class="card-title">Área de Vehículos</h5>
+                <p class="card-text">Ver el área de Vehículos disponibles.</p>
                 <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de áreas</small></p>
             </div>
         </div>
@@ -77,9 +77,9 @@
         <div class="card-body">
             <i class="bi bi-truck icon-lg bg-light"></i>
             <div>
-                <h5 class="card-title">Vehiculos</h5>
-                <p class="card-text">Ver los vehiculos disponibles.</p>
-                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de vehiculos</small></p>
+                <h5 class="card-title">Vehículos</h5>
+                <p class="card-text">Ver los Vehículos disponibles.</p>
+                <p class="card-text"><small class="text-body-secondary">Presione para ir a la lista de Vehículos</small></p>
             </div>
         </div>
     </div>
