@@ -39,7 +39,7 @@
                     <th>Mensaje</th>
                     <th>Velocidad</th>
                     <th>Empleado</th>
-                    <th>Vehiculo</th>
+                    <th>Vehículo</th>
                     <th>Área</th>
                     <th></th>
                     @if(Auth::user()->role !== 'visualizer')

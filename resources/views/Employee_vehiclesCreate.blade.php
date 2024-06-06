@@ -63,7 +63,7 @@
                     <div class="col-md-4">
                         <label for="vehicles_id" class="form-label">No. de Vehículo:</label>
                         <select name="vehicles_id" id="vehicles_id" class="form-select" required="required">
-                            <option value="" disabled selected>Seleccionar Vehiculo</option> <!-- Mensaje predeterminado -->
+                            <option value="" disabled selected>Seleccionar Vehículo</option> <!-- Mensaje predeterminado -->
                             @foreach($vehicles as $vehicle)
                                 <option value="{{ $vehicle->id }}">{{ $vehicle->serial_number }}</option>
                             @endforeach

@@ -50,7 +50,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Informacion</th>
+                    <th>Información</th>
                     <th>Correos</th>
                     <th>Telefonos</th>
                     @if(Auth::user()->role !== 'visualizer')

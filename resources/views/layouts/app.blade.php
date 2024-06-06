@@ -111,14 +111,14 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Vehiculos
+                        Vehículos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('vehicles.index') }}">Ver Vehiculos</a></li>
-                        <li><a class="dropdown-item" href="{{ route('employee_vehicles.index') }}">Ver Vehiculos por empleado</a></li>
+                        <li><a class="dropdown-item" href="{{ route('vehicles.index') }}">Ver Vehículos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employee_vehicles.index') }}">Ver Vehículos por empleado</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('vehicles.create') }}">Agregar Vehiculos</a></li>
-                        <li><a class="dropdown-item" href="{{ route('employee_vehicles.create') }}">Asignar Vehiculo por Empleado</a></li>
+                        <li><a class="dropdown-item" href="{{ route('vehicles.create') }}">Agregar Vehículos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employee_vehicles.create') }}">Asignar Vehículo por Empleado</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -164,11 +164,11 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Tipos de vehiculo
+                                    Tipos de Vehículos
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('typevehicles.index') }}">Ver Tipos de vehiculo</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('typevehicles.create') }}">Agregar Tipo de vehiculo</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('typevehicles.index') }}">Ver Tipos de Vehículos</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('typevehicles.create') }}">Agregar Tipo de Vehículo</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">

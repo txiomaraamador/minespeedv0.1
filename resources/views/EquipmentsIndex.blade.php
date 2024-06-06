@@ -45,9 +45,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>No. de camara</th>
-                    <th>Camara</th>
-                    <th>Area donde se encuentra</th>
+                    <th>No. de cámara</th>
+                    <th>Cámara</th>
+                    <th>Área donde se encuentra</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -59,7 +59,7 @@
                     <td>{{ $equipment->nametypeequipment->description }}</td>
                     <td>{{ $equipment->namearea->name }}</td>
                     <td>
-                        <a href="{{ route('equipments.show', $equipment->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                        <a href="{{ route('equipments.show', $equipment->id) }}" style="color: #ee194f;">Mostrar más información</a>
                     </td>
                     @if(Auth::user()->role !== 'visualizer')
                     <td>

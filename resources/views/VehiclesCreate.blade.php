@@ -35,7 +35,7 @@
                 
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="serial_number" class="form-label">No. de serie</label>
+                        <label for="serial_number" class="form-label">No.</label>
                         <div class="mb-3 input-group">
                             
                             <input type="text" pattern="[0-9]*" class="form-control{{ $errors->has('serial_number') ? ' is-invalid' : '' }}" id="serial_number" name="serial_number" required>
@@ -132,9 +132,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3 ">
-                            <label for="typevehicles_id" class="form-label">Tipo de vehiculo:</label>
+                            <label for="typevehicles_id" class="form-label">Tipo de vehículo:</label>
                             <select name="typevehicles_id" id="typevehicles_id" class="form-select{{ $errors->has('typevehicles_id') ? ' is-invalid' : '' }}" required>
-                                <option value="" disabled selected>Seleccionar tipo de vehiculo</option> <!-- Mensaje predeterminado -->
+                                <option value="" disabled selected>Seleccionar tipo de vehículo</option> <!-- Mensaje predeterminado -->
                                 @foreach($typevehicles as $typevehicle)
                                     <option value="{{ $typevehicle->id }}">{{ $typevehicle->name }}</option>
                                 @endforeach

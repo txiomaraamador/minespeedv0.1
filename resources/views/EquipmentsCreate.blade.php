@@ -33,7 +33,7 @@
                 @csrf
                 
                 <div class="mb-3">
-                    <label for="number" class="form-label">No. de camara</label>
+                    <label for="number" class="form-label">IP de cámara</label>
                     <input type="text" class="form-control" id="number" name="number">
                 </div>
 

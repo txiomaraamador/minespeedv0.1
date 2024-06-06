@@ -47,7 +47,7 @@
             <thead>
                 <tr>
                     <th>Marca</th>
-                    <th>Description</th>
+                    <th>Descripción</th>
                     <th>Modelo</th>
                     <th></th>
                 </tr>

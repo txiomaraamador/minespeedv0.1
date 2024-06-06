@@ -35,7 +35,7 @@
                 
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="identification_number" class="form-label">No. Identificacion</label>
+                        <label for="identification_number" class="form-label">No. Identificación</label>
                         <div class="mb-3 input-group">
                             
                             <input type="text" class="form-control{{ $errors->has('identification_number') ? ' is-invalid' : '' }}" id="identification_number" name="identification_number" required>
