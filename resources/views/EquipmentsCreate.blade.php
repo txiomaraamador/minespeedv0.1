@@ -2,7 +2,7 @@
 
 @section('title', 'Equipos Create')
 @section('content')
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <br>
 <div class="container mt-5">
     <div class="card">
@@ -32,10 +32,20 @@
             <form method="POST" action="{{ route('equipments.store') }}">
                 @csrf
                 
-                <div class="mb-3">
-                    <label for="number" class="form-label">IP de cámara</label>
-                    <input type="text" class="form-control" id="number" name="number">
-                </div>
+
+                <label for="info" class="form-label">IP de cámara:</label>
+                        <div class="mb-3 input-group">
+                            
+                            <input type="text" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" id="number" name="number" required>
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la IP de la camara. Ejemplo: 125.0.0.1">
+                                <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
+                            </span>
+                            @error('number')
+                            <div class="invalid-feedback" style="color: red;">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
 
                 <div class="row">
                     <div class="col-md-6">

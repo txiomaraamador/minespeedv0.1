@@ -39,7 +39,7 @@
                         <div class="mb-3 input-group">
                             
                             <input type="text" pattern="[0-9]*" class="form-control{{ $errors->has('serial_number') ? ' is-invalid' : '' }}" id="serial_number" name="serial_number" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehículo, solo se aceptan números.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('serial_number')
@@ -54,7 +54,7 @@
                         <div class="mb-3 input-group">
                             
                             <input type="text" class="form-control{{ $errors->has('make') ? ' is-invalid' : '' }}" id="make" name="make" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la marca vehículo, puede contener números y letras.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('make')
@@ -69,7 +69,7 @@
                         <div class="mb-3 input-group">
                             
                             <input type="text" class="form-control{{ $errors->has('model') ? ' is-invalid' : '' }}" id="model" name="model" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el modelo vehículo, puede contener números y letras.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('model')
@@ -87,7 +87,7 @@
                         <div class="mb-3 input-group">
                            
                             <input type="text" class="form-control{{ $errors->has('manufacture') ? ' is-invalid' : '' }}" id="manufacture" name="manufacture" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la manufactura vehículo, puede contener números y letras.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('manufacture')
@@ -102,7 +102,7 @@
                         <div class="mb-3 input-group">
                             
                             <input type="text" class="form-control{{ $errors->has('plate') ? ' is-invalid' : '' }}" id="plate" name="plate" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la placa vehículo, puede contener números y letras.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('plate')
@@ -117,7 +117,7 @@
                         <div class="mb-3 input-group" >
                           
                             <input type="text" class="form-control{{ $errors->has('tonnage') ? ' is-invalid' : '' }}" id="tonnage" name="tonnage" required>
-                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el numero de serie del vehiculo, solo se aceptan numeros.">
+                            <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la carga del vehículo, Ejemplo: 200.6 k.">
                                 <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                             </span>
                             @error('tonnage')
