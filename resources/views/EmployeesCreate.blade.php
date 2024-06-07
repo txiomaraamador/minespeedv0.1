@@ -9,13 +9,33 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">Agregar Empleado</h2>
+            @if(session('error'))
+            <div id="alert" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+@endif
+
+            @if(session('success'))
+                <div id="alert" class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <script>
+                // Código JavaScript para ocultar la alerta después de unos segundos
+                setTimeout(function(){
+                    var alert = document.getElementById('alert');
+                    if(alert) {
+                        alert.style.display = 'none';
+                    }
+                }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
+            </script>
             <hr style="border-top: 2px solid #ee194f;">
             <form method="POST" action="{{ route('employees.store') }}">
                 @csrf
                 
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="identification_number" class="form-label">No. Identificacion</label>
+                        <label for="identification_number" class="form-label">No. Identificación</label>
                         <div class="mb-3 input-group">
                             
                             <input type="text" class="form-control{{ $errors->has('identification_number') ? ' is-invalid' : '' }}" id="identification_number" name="identification_number" required>

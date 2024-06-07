@@ -10,7 +10,26 @@
             <h1 class="display-4 mb-4">Historial de Alertas</h1>
         </div>
     </nav>
+    @if(session('error'))
+    <div id="alert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
+    @if(session('success'))
+        <div id="alert" class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <script>
+        // Código JavaScript para ocultar la alerta después de unos segundos
+        setTimeout(function(){
+            var alert = document.getElementById('alert');
+            if(alert) {
+                alert.style.display = 'none';
+            }
+        }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
+    </script>
 
     <div class="table-responsive">
         <table class="table table-hover">
@@ -20,8 +39,8 @@
                     <th>Mensaje</th>
                     <th>Velocidad</th>
                     <th>Empleado</th>
-                    <th>Vehiculo</th>
-                    <th>Area</th>
+                    <th>Vehículo</th>
+                    <th>Área</th>
                     <th></th>
                     @if(Auth::user()->role !== 'visualizer')
                     <th></th>
@@ -38,7 +57,7 @@
                     <td>{{ $history->employee_vehicle->namevehicle->serial_number }}</td>
                     <td>{{ $history->nameequipment->namearea->name }}</td>
                     <td>
-                        <a href="{{ route('histories.show', $history->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                        <a href="{{ route('histories.show', $history->id) }}" style="color: #ee194f;">Mostrar más información</a>
                     </td>
                     @if(Auth::user()->role !== 'visualizer')
                     <td>
@@ -47,7 +66,7 @@
                             <form action="{{ route('histories.destroy', $history->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este Vehiculo?')">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este registro?')">Eliminar</button>
                             </form>
                         </div>
                     </td>

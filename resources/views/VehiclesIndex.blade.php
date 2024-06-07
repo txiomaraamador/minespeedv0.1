@@ -7,32 +7,51 @@
 <div class="container mt-4">
     <nav class="navbar border-bottom border-body">
         <div class="container-fluid">
-            <h1 class="display-4 mb-4">Todos los vehiculos</h1>
+            <h1 class="display-4 mb-4">Todos los vehículos</h1>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 @if(Auth::user()->role !== 'visualizer')
                 <a class="dropdown-item" href="{{ route('vehicles.create') }}">
                     <button class="btn btn-primary" 
                     style="background-color: #ee194f; border-color: #ee194f; color: #fff;">
-                        Agregar Vehiculo
+                        Agregar Vehículo
                     </button>
                 </a>
                 @endif
             </div>
         </div>
     </nav>
+    @if(session('error'))
+    <div id="alert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
+    @if(session('success'))
+        <div id="alert" class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <script>
+        // Código JavaScript para ocultar la alerta después de unos segundos
+        setTimeout(function(){
+            var alert = document.getElementById('alert');
+            if(alert) {
+                alert.style.display = 'none';
+            }
+        }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
+    </script>
 
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>No. de serie</th>
+                    <th>No.</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Manufactura</th>
                     <th>Placa</th>
                     <th>Carga</th>
-                    <th>Tipo de vehiculo</th>
+                    <th>Tipo de vehículo</th>
                     <th></th>
                     @if(Auth::user()->role !== 'visualizer')
                     <th></th>
@@ -50,7 +69,7 @@
                     <td>{{ $vehicle->tonnage }}</td>
                     <td>{{ $vehicle->nametypevehicle->name}}</td>
                     <td>
-                        <a href="{{ route('vehicles.show', $vehicle->id) }}" style="color: #ee194f;">Mostrar mas informacion</a>
+                        <a href="{{ route('vehicles.show', $vehicle->id) }}" style="color: #ee194f;">Mostrar más información</a>
                     </td>
                     @if(Auth::user()->role !== 'visualizer')
                     <td>

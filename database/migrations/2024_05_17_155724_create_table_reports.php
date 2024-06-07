@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('speed');
             $table->string('camera_ip');
             $table->text('image');
+            $table->enum('status', ['1', '0'])->default('1');
             $table->timestamps();
         });
     }

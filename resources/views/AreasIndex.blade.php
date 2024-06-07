@@ -27,7 +27,26 @@
         
     </div>
 </nav>
+@if(session('error'))
+<div id="alert" class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
 
+@if(session('success'))
+    <div id="alert" class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+<script>
+    // Código JavaScript para ocultar la alerta después de unos segundos
+    setTimeout(function(){
+        var alert = document.getElementById('alert');
+        if(alert) {
+            alert.style.display = 'none';
+        }
+    }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
+</script>
 <div class="container">
 
     <div class="table-responsive">
